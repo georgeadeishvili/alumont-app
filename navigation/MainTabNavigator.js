@@ -4,7 +4,7 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from "react-navigation";
-
+import GyroScope from "../screens/GyroScope";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
@@ -18,6 +18,7 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    GyroScope,
     Notes: NotesScreen,
     Home: HomeScreen
   },

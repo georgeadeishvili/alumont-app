@@ -3,7 +3,6 @@ import { View, Text, Dimensions } from "react-native";
 import { MaterialIcons, Entypo } from "@expo/vector-icons";
 import Note from "./Note";
 import { LinearGradient } from "expo-linear-gradient";
-
 const NotesScreen = () => {
   return (
     <View
