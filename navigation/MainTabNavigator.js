@@ -18,26 +18,12 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    Home: HomeScreen,
     GyroScope,
-    Notes: NotesScreen,
-    Home: HomeScreen
+    Notes: NotesScreen
   },
   config
 );
-
-HomeStack.navigationOptions = {
-  tabBarLabel: "Home",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === "ios"
-          ? `ios-information-circle${focused ? "" : "-outline"}`
-          : "md-information-circle"
-      }
-    />
-  )
-};
 
 HomeStack.path = "";
 
@@ -79,12 +65,4 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = "";
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack
-});
-
-tabNavigator.path = "";
-
-export default tabNavigator;
+export default HomeStack;

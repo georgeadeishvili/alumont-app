@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add expo-sensors
+  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-native-svg
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/odin/Library/Android/sdk/emulator:/Users/odin/Library/Android/sdk/tools:/Users/odin/Library/Android/sdk/tools/bin:/Users/odin/Library/Android/sdk/platform-tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
@@ -39,6 +39,7 @@ npm manifest:
       "expo-constants": "^7.0.0",
       "expo-font": "^7.0.0",
       "expo-linear-gradient": "^7.0.1",
+      "expo-sensors": "^7.0.0",
       "expo-web-browser": "^7.0.0",
       "react": "16.8.3",
       "react-dom": "16.8.3",
@@ -2644,6 +2645,13 @@ Lockfile:
     version "7.0.0"
     resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-7.0.0.tgz#f4135c3cf8e49c673a9a714459a1eb2b40fe2092"
     integrity sha512-C+qyVz+pdZO4YpVR2HSC3gsBZg0Qb8brCFgzmDmWcAtgrOiHClaLPdhI2XtQuGh8ubXcKPUGZp++UCEGiG0Jxg==
+  
+  expo-sensors@^7.0.0:
+    version "7.0.0"
+    resolved "https://registry.yarnpkg.com/expo-sensors/-/expo-sensors-7.0.0.tgz#b917fc167151edfaf9a9561a262691fc4fc8ed07"
+    integrity sha512-NBPQ8+E8w0DazYktQcho213SKwerXcBVsmbxsgtaSisGYuIi4fdJo7ZcSRI/SmYXjaHlTc4uTPFvQWRwHGKRuQ==
+    dependencies:
+      invariant "^2.2.4"
   
   expo-sqlite@~7.0.0:
     version "7.0.0"
