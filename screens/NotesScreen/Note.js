@@ -1,10 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const Note = () => {
+const Note = props => {
   return (
-    <View style={{ height: 108, flexDirection: "row", paddingHorizontal: 12 }}>
+    <TouchableOpacity
+      onPress={() => props.onNotePress()}
+      style={{ height: 108, flexDirection: "row", paddingHorizontal: 12 }}
+    >
       <View style={{ width: 80, justifyContent: "center" }}>
         <View
           style={{
@@ -29,7 +32,7 @@ const Note = () => {
           style={{ height: 2, backgroundColor: "#F1F2F4", marginBottom: 8 }}
         ></View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

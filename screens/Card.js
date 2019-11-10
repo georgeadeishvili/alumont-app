@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Image, Text } from "react-native";
+import { TouchableOpacity } from "react-native";
 const Card = props => {
   return (
     <View
@@ -25,11 +26,13 @@ const Card = props => {
           {props.title}
         </Text>
         <View style={{ flex: 1, alignItems: "flex-end" }}>
-          <Image
-            style={{ width: 50, height: 60 }}
-            resizeMode={"contain"}
-            source={require("./SVG/back.png")}
-          />
+          <TouchableOpacity onPress={() => props.onPress()}>
+            <Image
+              style={{ width: 50, height: 60 }}
+              resizeMode={"contain"}
+              source={require("./SVG/back.png")}
+            />
+          </TouchableOpacity>
         </View>
       </View>
 

@@ -16,7 +16,7 @@ import WaveView from "./UnionIcon.js";
 import SvgUri from "expo-svg-uri";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "./Card";
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   return (
     <View style={styles.container}>
       <ScrollView style={{ flex: 1 }}>
@@ -39,12 +39,18 @@ export default function HomeScreen() {
           }}
         >
           <Card
+            onPress={() => {
+              props.navigation.navigate("Notes");
+            }}
             title="Notizen"
             des="Erstelle Notizen, Bilder, etc."
             icon="Notizen"
           />
           <View style={{ height: 30 }} />
           <Card
+            onPress={() => {
+              props.navigation.navigate("GyroScope");
+            }}
             icon="wink"
             title="Winklemesser"
             des="Klicke hier drauf um den Winklemesser

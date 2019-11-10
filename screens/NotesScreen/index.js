@@ -1,9 +1,10 @@
-import React from "react";
-import { View, Text, Dimensions } from "react-native";
+import React, { useState, Fragment } from "react";
+import { View, Text, Dimensions, TouchableOpacity } from "react-native";
 import { MaterialIcons, Entypo } from "@expo/vector-icons";
 import Note from "./Note";
 import { LinearGradient } from "expo-linear-gradient";
-const NotesScreen = () => {
+const NotesScreen = props => {
+  const [modal, setModal] = useState(false);
   return (
     <View
       style={{
@@ -36,77 +37,85 @@ const NotesScreen = () => {
         }}
       >
         {[1, 2, 3].map(item => {
-          return <Note />;
+          return <Note onNotePress={() => setModal(true)} />;
         })}
       </View>
 
-      <View
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0,0,0,0.5)"
-        }}
-      />
-
-      <View
-        style={{
-          position: "absolute",
-          right: 0,
-          bottom: 30
-        }}
-      >
-        <View
-          style={{
-            height: 70,
-            backgroundColor: "#FFFFFF",
-            width: Dimensions.get("window").width / 1.5,
-            flexDirection: "row",
-            alignItems: "center",
-            paddingLeft: 15,
-            paddingRight: 10,
-            justifyContent: "space-between"
-          }}
-        >
-          <Text style={{ color: "#8A94A6", fontSize: 21 }}>Shoot an image</Text>
-          <Entypo color="#000" name="chevron-small-right" size={30} />
-        </View>
-        <View
-          style={{
-            backgroundColor: "#0D55CF",
-            height: 70,
-            width: Dimensions.get("window").width / 1.5,
-            flexDirection: "row",
-            alignItems: "center",
-            paddingLeft: 15,
-            paddingRight: 10,
-            justifyContent: "space-between"
-          }}
-        >
-          <Text style={{ color: "#8A94A6", fontSize: 21 }}>Shoot an image</Text>
-        </View>
-        <LinearGradient
-          colors={["#7EFFD3", "#42CC9D"]}
-          start={[1.0, 0.5]}
-          end={[0.0, 0.5]}
-          style={{
-            height: 70,
-            width: Dimensions.get("window").width / 1.5,
-            justifyContent: "center",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            paddingHorizontal: 15
-          }}
-        >
-          <Text style={{ color: "#FFF", fontWeight: "500", fontSize: 17 }}>
-            New Note
-          </Text>
-          <Entypo color="#FFF" name="plus" size={25} />
-        </LinearGradient>
-      </View>
+      {modal && (
+        <Fragment>
+          <View
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              backgroundColor: "rgba(0,0,0,0.5)"
+            }}
+          />
+          <View
+            style={{
+              position: "absolute",
+              right: 0,
+              bottom: 30
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("editImage")}
+              style={{
+                height: 70,
+                backgroundColor: "#FFFFFF",
+                width: Dimensions.get("window").width / 1.5,
+                flexDirection: "row",
+                alignItems: "center",
+                paddingLeft: 15,
+                paddingRight: 10,
+                justifyContent: "space-between"
+              }}
+            >
+              <Text style={{ color: "#8A94A6", fontSize: 21 }}>
+                Shoot an image
+              </Text>
+              <Entypo color="#000" name="chevron-small-right" size={30} />
+            </TouchableOpacity>
+            <View
+              style={{
+                backgroundColor: "#0D55CF",
+                height: 70,
+                width: Dimensions.get("window").width / 1.5,
+                flexDirection: "row",
+                alignItems: "center",
+                paddingLeft: 15,
+                paddingRight: 10,
+                justifyContent: "space-between"
+              }}
+            >
+              <Text style={{ color: "#8A94A6", fontSize: 21 }}>
+                Make a Sketch
+              </Text>
+            </View>
+            <LinearGradient
+              colors={["#7EFFD3", "#42CC9D"]}
+              start={[1.0, 0.5]}
+              end={[0.0, 0.5]}
+              style={{
+                height: 70,
+                width: Dimensions.get("window").width / 1.5,
+                justifyContent: "center",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                paddingHorizontal: 15
+              }}
+            >
+              <Text style={{ color: "#FFF", fontWeight: "500", fontSize: 17 }}>
+                New Note
+              </Text>
+              <Entypo color="#FFF" name="plus" size={25} />
+            </LinearGradient>
+          </View>
+        </Fragment>
+      )}
     </View>
   );
 };
