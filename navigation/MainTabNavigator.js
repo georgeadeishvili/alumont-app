@@ -11,6 +11,7 @@ import LinksScreen from "../screens/LinksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import NotesScreen from "../screens/NotesScreen";
 import editImage from "../screens/EditImage";
+import Sketch from "../screens/Sketch";
 const config = Platform.select({
   web: { headerMode: "screen" },
   default: { headerMode: "none" }
@@ -18,6 +19,7 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    Sketch,
     Home: HomeScreen,
     editImage,
     GyroScope,

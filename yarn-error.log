@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-native-easy-gestures
+  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-native-svg@~9.9.2
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/odin/Library/Android/sdk/emulator:/Users/odin/Library/Android/sdk/tools:/Users/odin/Library/Android/sdk/tools/bin:/Users/odin/Library/Android/sdk/platform-tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
@@ -45,10 +45,12 @@ npm manifest:
       "react": "16.8.3",
       "react-dom": "16.8.3",
       "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+      "react-native-easy-gestures": "^2.2.4",
       "react-native-gesture-handler": "~1.3.0",
       "react-native-svg": "^9.13.3",
       "react-native-web": "^0.11.7",
-      "react-navigation": "^3.12.0"
+      "react-navigation": "^3.12.0",
+      "rn-draw": "^0.0.6"
     },
     "devDependencies": {
       "babel-preset-expo": "^7.0.0",
@@ -5701,6 +5703,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
     integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
   
+  ramda@^0.26.0:
+    version "0.26.1"
+    resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
+    integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
+  
   randomatic@^3.0.0:
     version "3.1.1"
     resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-3.1.1.tgz#b776efc59375984e36c537b2f51a1f0aff0da1ed"
@@ -5762,6 +5769,14 @@ Lockfile:
     version "3.0.1"
     resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-3.0.1.tgz#5b07b61cbd290168cd3c3662e017ebe0f356d2ca"
     integrity sha512-vbcYxPZlpF5f39GAEUF8kuGQqCNeD3E6zEdvtOq8oCGZunHXlWlKgAS6dgBKCvsHvXgHuMtpvs39VgOp8DaKig==
+  
+  react-native-easy-gestures@^2.2.4:
+    version "2.2.4"
+    resolved "https://registry.yarnpkg.com/react-native-easy-gestures/-/react-native-easy-gestures-2.2.4.tgz#669d345fba26342e180dcf3a0b6dc0032bed3167"
+    integrity sha512-a8rIqkAiE9pySVXEbZS3qQpzpVI4036LHkQDdByDlXIBplQhq9KMYVz0z+UxHlSF4He34FDGfuE/52n0wpDe6Q==
+    dependencies:
+      prop-types "^15.6.0"
+      ramda "^0.26.0"
   
   react-native-gesture-handler@~1.3.0:
     version "1.3.0"
@@ -6219,6 +6234,11 @@ Lockfile:
     version "2.2.8"
     resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
     integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
+  
+  rn-draw@^0.0.6:
+    version "0.0.6"
+    resolved "https://registry.yarnpkg.com/rn-draw/-/rn-draw-0.0.6.tgz#6577695ae079579e83f3e86cfb5c2e8f654d52c1"
+    integrity sha1-ZXdpWuB5V56D8+hs+1wuj2VNUsE=
   
   rsvp@^3.3.3:
     version "3.6.2"
