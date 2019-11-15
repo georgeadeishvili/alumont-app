@@ -15,6 +15,7 @@ export default class Point {
     return Math.sqrt(
       Math.pow(this.x - start.x, 2) + Math.pow(this.y - start.y, 2)
     );
+    
   }
 
   equals(point) {

@@ -1,6 +1,12 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions
+} from "react-native";
 import RNDraw from "./rn-draw-additional";
 import uuidv1 from "uuid/v1";
 // import { Svg } from "./rn-draw-additional/src/config";
@@ -81,12 +87,15 @@ class Sketch extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.imageFrame}>
-            <Image
+            {/* <Image
               style={styles.backgroundImg}
               source={require("./whiteboard.jpg")}
-            />
+            /> */}
             <RNDraw
-              containerStyle={{ backgroundColor: "rgba(0,0,0,0.01)" }}
+              containerStyle={{
+                backgroundColor: "rgba(0,0,0,0.01)",
+                width: Dimensions.get("window").width
+              }}
               rewind={undo => {
                 this._undo = undo;
               }}
@@ -115,21 +124,15 @@ class Sketch extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 40,
-    paddingLeft: 5,
-    paddingRight: 5,
-    paddingBottom: 10
+    position: "absolute",
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0
   },
   imageFrame: {
-    height: 350,
-    width: 350,
-    padding: 15,
-    flexDirection: "row",
-    justifyContent: "center"
+    flex: 1
   },
   btnContainer: {
     flexDirection: "row",
