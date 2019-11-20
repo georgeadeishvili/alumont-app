@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-native-svg@~9.9.2
+  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-native-reanimated@~1.2.0
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/odin/Library/Android/sdk/emulator:/Users/odin/Library/Android/sdk/tools:/Users/odin/Library/Android/sdk/tools/bin:/Users/odin/Library/Android/sdk/platform-tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/:/Users/odin/Library/Android/sdk/emulator:/Users/odin/Library/Android/sdk/tools:/Users/odin/Library/Android/sdk/tools/bin:/Users/odin/Library/Android/sdk/platform-tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
 
 Yarn version: 
   1.17.3
@@ -42,14 +42,16 @@ npm manifest:
       "expo-sensors": "^7.0.0",
       "expo-svg-uri": "^1.1.0",
       "expo-web-browser": "^7.0.0",
+      "humps": "^2.0.1",
       "react": "16.8.3",
       "react-dom": "16.8.3",
       "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
       "react-native-easy-gestures": "^2.2.4",
       "react-native-gesture-handler": "~1.3.0",
-      "react-native-svg": "^9.13.3",
+      "react-native-material-textfield": "^0.16.1",
       "react-native-web": "^0.11.7",
       "react-navigation": "^3.12.0",
+      "reanimated-bottom-sheet": "^1.0.0-alpha.16",
       "rn-draw": "^0.0.6"
     },
     "devDependencies": {
@@ -3354,6 +3356,11 @@ Lockfile:
       jsprim "^1.2.2"
       sshpk "^1.7.0"
   
+  humps@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/humps/-/humps-2.0.1.tgz#dd02ea6081bd0568dc5d073184463957ba9ef9aa"
+    integrity sha1-3QLqYIG9BWjcXQcxhEY5V7qe+ao=
+  
   hyphenate-style-name@^1.0.2:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.3.tgz#097bb7fa0b8f1a9cf0bd5c734cf95899981a9b48"
@@ -5642,7 +5649,7 @@ Lockfile:
       kleur "^3.0.3"
       sisteransi "^1.0.3"
   
-  prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.7.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
     integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5787,6 +5794,13 @@ Lockfile:
       invariant "^2.2.2"
       prop-types "^15.5.10"
   
+  react-native-material-textfield@^0.16.1:
+    version "0.16.1"
+    resolved "https://registry.yarnpkg.com/react-native-material-textfield/-/react-native-material-textfield-0.16.1.tgz#649e71344bb8a7225d5cea7c7b51cd38bcb2bbfc"
+    integrity sha512-pcV/ic3i6vYEODS7pvAMUYJ+evkzIB8cjXtSzkab9rBtYNGRpAlM0Yp8QNnjZ7foZqkj9Ynav0nguWcuJST10A==
+    dependencies:
+      prop-types "^15.5.9"
+  
   react-native-platform-touchable@^1.1.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
@@ -5806,7 +5820,7 @@ Lockfile:
     dependencies:
       debounce "^1.2.0"
   
-  react-native-svg@^9.13.3, react-native-svg@^9.9.4:
+  react-native-svg@^9.9.4:
     version "9.13.3"
     resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.13.3.tgz#6414b337d55af169ac2487ab70f3108404434446"
     integrity sha512-H50b2m4jvrQ7KxKs8uYSuWecr6e5XC7BDfS7DaA96+0Owjh0C9DksI5l8SRyHnmE+emiYMPu6Qqfr9dCyKkaJQ==
@@ -6025,6 +6039,11 @@ Lockfile:
     integrity sha512-wlgPA6cCIIg9gKz0fgAPjnzh4yR/LnXovwuo9hvyGvx3h8nX4+/iLZplfUWasXpqD8BdnGnP5njOFjkUwPzvjA==
     dependencies:
       util.promisify "^1.0.0"
+  
+  reanimated-bottom-sheet@^1.0.0-alpha.16:
+    version "1.0.0-alpha.16"
+    resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.16.tgz#00bf895a788df2fd16d25a570afdc8ceae5ee8c0"
+    integrity sha512-wAdyCzXbkshJp4hHkXseKC2H59Hn6c/VrH98Bn74C8Mb8ZmRqQLF9KYiOMWIMFV9fq4LzywdKfIjrNfpmrGaMA==
   
   regenerate-unicode-properties@^8.1.0:
     version "8.1.0"
