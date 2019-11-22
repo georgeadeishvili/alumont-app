@@ -50,7 +50,9 @@ const LoginScreen = (props) => {
             </TouchableOpacity>
             <View style={styles.registerWrapper}>
                 <Text style={{color: '#ABB4BD'}}>Hier geht’s zur </Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => props.navigation.navigate('Registration')}
+                >
                     <Text style={{color: '#006F3D'}}>Registrierung</Text>
                 </TouchableOpacity>
             </View>

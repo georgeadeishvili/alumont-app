@@ -16,6 +16,7 @@ import editImage from "../screens/EditImage";
 
 import Sketch from "../screens/Sketch";
 import Login from '../screens/Authentication/LoginScreen'
+import Registration from '../screens/Authentication/RegistrationScreen'
 const config = Platform.select({
   web: { headerMode: "screen" },
   default: { headerMode: "none" }
@@ -24,6 +25,7 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Login,
+    Registration,
     Sketch,
     Home: HomeScreen,
     editImage,
