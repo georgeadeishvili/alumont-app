@@ -1,39 +1,47 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { View, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native'
 import { Input } from '../../components/Input'
 import SvgUri from 'expo-svg-uri'
-import { AntDesign } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import {
+  TextField,
+  FilledTextField,
+  OutlinedTextField
+} from "react-native-material-textfield"
+import { WebView } from "react-native-webview"
+import BottomSheet from "reanimated-bottom-sheet"
 
 const { width, height } = Dimensions.get('window')
 
 const LoginScreen = (props) => {
-
+    const bottomSheetRef = useRef()
     return (
         <View style={styles.mainWrapper}>
             <SvgUri
+                style={{ marginTop: 100 }}
                 width={width*0.613}
                 source={require("../../assets/images/Logo.svg")}
             />
             <TouchableOpacity
                 style={styles.visitWebStyle}
+                onPress={() => bottomSheetRef.current.snapTo(0)}
             >
-                <AntDesign name='earth' size={20} color='#FFF' />
+                <MaterialCommunityIcons name='web' size={20} color='#FFF' />
                 <Text style={styles.visitWebText}>Zu unserer Homepage</Text>
             </TouchableOpacity>
             <Text style={{color: '#ABB4BD'}}>oder</Text>
             <View style={styles.inputWrapper}>
-                <Input
+                <TextField
                     label='E-Mail oder Kundennu'
-                    placeholder='abhinav180@hotmail.com'
+                    keyboardType="email-address"
                 />
-                <Input
+                <TextField
                     label='Passwort'
-                    placeholder='********'
                     secureTextEntry
                 />
                 <TouchableOpacity>
-                <Text style={{color: '#006F3D'}}>Passwort vergessen?</Text>
-            </TouchableOpacity>
+                    <Text style={{color: '#006F3D'}}>Passwort vergessen?</Text>
+                </TouchableOpacity>
             </View>
             <TouchableOpacity
                 style={styles.loginButton}
@@ -46,6 +54,27 @@ const LoginScreen = (props) => {
                     <Text style={{color: '#006F3D'}}>Registrierung</Text>
                 </TouchableOpacity>
             </View>
+            <BottomSheet
+                initialSnap={2}
+                ref={bottomSheetRef}
+                snapPoints={['90%', 0, 0]}
+                renderContent={() => (
+                    <View style={styles.panel}>
+                    <WebView
+                        originWhitelist={["*"]}
+                        source={{ uri: "https://www.alumont.com/" }}
+                        style={{ marginTop: 20 }}
+                    />
+                    </View>
+                )}
+                renderHeader={() => (
+                    <View style={styles.header}>
+                    <View style={styles.panelHeader}>
+                        <View style={styles.panelHandle} />
+                    </View>
+                    </View>
+                )}
+            />
         </View>
     )
 }
@@ -77,7 +106,6 @@ const styles = StyleSheet.create({
         width: width * 0.84,
         height: height * 0.2,
         justifyContent: 'space-around',
-        alignItems: 'flex-end'
     },
     loginButton: {
         width: width * 0.84,
@@ -90,8 +118,38 @@ const styles = StyleSheet.create({
     registerWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
-    }
+        justifyContent: 'center',
+        marginBottom: 50
+    },
+    panel: {
+        height: height*0.9,
+        padding: 0,
+        backgroundColor: "#F5f5f5",
+        paddingTop: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        shadowColor: "#000000",
+        shadowOffset: { width: 0, height: 0 },
+        shadowRadius: 5,
+        shadowOpacity: 0.4
+    },
+    header: {
+        backgroundColor: "#f7f5eee8",
+        shadowColor: "#000000",
+        paddingTop: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    panelHeader: {
+        alignItems: "center"
+    },
+    panelHandle: {
+        width: 40,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: "#00000080",
+        marginBottom: 10
+    },
 })
 
 export default LoginScreen

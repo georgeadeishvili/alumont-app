@@ -8,7 +8,7 @@ import GyroScope from "../screens/GyroScope";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import Auth from "../screens/Auth";
-import Login from "../screens/Auth/Login";
+//import Login from "../screens/Auth/Login";
 import LinksScreen from "../screens/LinksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import NotesScreen from "../screens/NotesScreen";
