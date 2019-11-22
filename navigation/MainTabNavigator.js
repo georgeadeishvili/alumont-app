@@ -12,11 +12,12 @@ import Auth from "../screens/Auth";
 import LinksScreen from "../screens/LinksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import NotesScreen from "../screens/NotesScreen";
+import TaskScreen from "../screens/TaskScreen";
 import editImage from "../screens/EditImage";
 
 import Sketch from "../screens/Sketch";
-import Login from '../screens/Authentication/LoginScreen'
-import Registration from '../screens/Authentication/RegistrationScreen'
+import Login from "../screens/Authentication/LoginScreen";
+import Registration from "../screens/Authentication/RegistrationScreen";
 const config = Platform.select({
   web: { headerMode: "screen" },
   default: { headerMode: "none" }
@@ -24,6 +25,7 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    TaskScreen,
     Login,
     Registration,
     Sketch,
