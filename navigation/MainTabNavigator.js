@@ -18,6 +18,9 @@ import editImage from "../screens/EditImage";
 import Sketch from "../screens/Sketch";
 import Login from "../screens/Authentication/LoginScreen";
 import Registration from "../screens/Authentication/RegistrationScreen";
+import Reset from '../screens/Authentication/ResetPassword'
+import VerifyEmail from '../screens/Authentication/VerifyEmail'
+
 const config = Platform.select({
   web: { headerMode: "screen" },
   default: { headerMode: "none" }
@@ -25,6 +28,8 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    VerifyEmail,
+    Reset,
     TaskScreen,
     Login,
     Registration,
