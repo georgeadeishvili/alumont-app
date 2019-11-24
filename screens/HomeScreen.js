@@ -16,6 +16,7 @@ import WaveView from "./UnionIcon.js";
 import SvgUri from "expo-svg-uri";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "./Card";
+import * as firebase from "firebase";
 export default function HomeScreen(props) {
   return (
     <View style={styles.container}>
@@ -117,6 +118,16 @@ zu benutzen"
             ></View>
           </View>
         </View>
+
+        <TouchableOpacity
+          onPress={() => {
+            firebase.auth().signOut();
+            props.navigation.navigate("Login");
+          }}
+          style={{ width: 100, height: 50, backgroundColor: "black" }}
+        >
+          <Text style={{ color: "#FFF" }}>logout</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
