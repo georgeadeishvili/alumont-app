@@ -19,9 +19,9 @@ import Sketch from "../screens/Sketch";
 import Login from "../screens/Authentication/LoginScreen";
 import Auth from "../screens/Authentication";
 import Registration from "../screens/Authentication/RegistrationScreen";
-import Reset from '../screens/Authentication/ResetPassword'
-import VerifyEmail from '../screens/Authentication/VerifyEmail'
-import Pending from '../screens/Captions/PendingScreen'
+import Reset from "../screens/Authentication/ResetPassword";
+import VerifyEmail from "../screens/Authentication/VerifyEmail";
+import Pending from "../screens/Captions/PendingScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -31,6 +31,8 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Auth,
+    Reset,
+    VerifyEmail,
     Login,
     TaskScreen,
     Registration,

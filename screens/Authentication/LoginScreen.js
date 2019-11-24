@@ -67,7 +67,9 @@ const LoginScreen = props => {
           label="Password"
           secureTextEntry
         />
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate("VerifyEmail")}
+        >
           <Text style={{ color: "#006F3D" }}>Passwort vergessen?</Text>
         </TouchableOpacity>
       </View>
