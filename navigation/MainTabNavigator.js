@@ -7,7 +7,7 @@ import {
 import GyroScope from "../screens/GyroScope";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
-import Auth from "../screens/Auth";
+// import Auth from "../screens/Auth";
 //import Login from "../screens/Auth/Login";
 import LinksScreen from "../screens/LinksScreen";
 import SettingsScreen from "../screens/SettingsScreen";
@@ -17,6 +17,7 @@ import editImage from "../screens/EditImage";
 
 import Sketch from "../screens/Sketch";
 import Login from "../screens/Authentication/LoginScreen";
+import Auth from "../screens/Authentication";
 import Registration from "../screens/Authentication/RegistrationScreen";
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -25,8 +26,9 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    TaskScreen,
+    Auth,
     Login,
+    TaskScreen,
     Registration,
     Sketch,
     Home: HomeScreen,

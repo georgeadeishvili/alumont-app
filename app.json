@@ -4,11 +4,19 @@
     "slug": "german-app",
     "privacy": "public",
     "sdkVersion": "35.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "extra": {
+      "firebase": {
+        "apiKey": "AIzaSyBmphFkBkPlbR6z5FlvapR9jG9SaTLxjIY",
+        "authDomain": "alomunt-21fa2.firebaseapp.com",
+        "databaseURL": "https://alomunt-21fa2.firebaseio.com",
+        "projectId": "alomunt-21fa2",
+        "storageBucket": "alomunt-21fa2.appspot.com",
+        "messagingSenderId": "302668348101",
+        "appId": "1:302668348101:web:c66f77630697ba3a62ceac",
+        "measurementId": "G-1TN1005SGC"
+      }
+    },
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -20,9 +28,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     }
