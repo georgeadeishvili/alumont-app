@@ -30,6 +30,7 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    Pending,
     Auth,
     Reset,
     VerifyEmail,

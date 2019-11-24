@@ -6326,6 +6326,13 @@ react-native-status-bar-height@^2.2.0:
   resolved "https://registry.yarnpkg.com/react-native-status-bar-height/-/react-native-status-bar-height-2.4.0.tgz#de8cee4bb733a196167210d2d0bc1fa10acba3e3"
   integrity sha512-pWvZFlyIHiuxLugLioq97vXiaGSovFXEyxt76wQtbq0gxv4dGXMPqYow46UmpwOgeJpBhqL1E0EKxnfJRrFz5w==
 
+react-native-svg-uri-reborn@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-svg-uri-reborn/-/react-native-svg-uri-reborn-1.0.8.tgz#9cb9fd469a834fada027d0db4e7b7a5957ed0a4b"
+  integrity sha512-dzxMv9arpInHN/hkDDHDCLPvg6P3CGU/nholjtDDT9skMFxkTiKkCkoNe5MMaQ9F2YGv1gRYnE+n/qqNQcnrfA==
+  dependencies:
+    xmldom-reborn "^1.0.1"
+
 react-native-svg@^9.9.4:
   version "9.13.3"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.13.3.tgz#6414b337d55af169ac2487ab70f3108404434446"
@@ -7889,6 +7896,11 @@ xmldoc@^0.4.0:
   integrity sha1-0lciS+g5PqrL+DfvIn/Y7CWzaIg=
   dependencies:
     sax "~1.1.1"
+
+xmldom-reborn@^1.0.1:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/xmldom-reborn/-/xmldom-reborn-1.0.5.tgz#87dfff687f6c6c0640e81c62a025ff8d11212195"
+  integrity sha512-jaLGNceb9ELo7lkQwBGUg9HqVgidqUMcG3d4gFHq+uKZSCnWH2zo+vdMzJoQtzNKzgX7yD+Ibp4mKEy1oZiBNg==
 
 xmldom@0.1.x, xmldom@^0.1.27:
   version "0.1.27"
