@@ -20,6 +20,7 @@ import Login from "../screens/Authentication/LoginScreen";
 import Registration from "../screens/Authentication/RegistrationScreen";
 import Reset from '../screens/Authentication/ResetPassword'
 import VerifyEmail from '../screens/Authentication/VerifyEmail'
+import Pending from '../screens/Captions/PendingScreen'
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -28,6 +29,7 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    Pending,
     VerifyEmail,
     Reset,
     TaskScreen,
