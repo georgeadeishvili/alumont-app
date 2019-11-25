@@ -7,10 +7,8 @@ import {
   StyleSheet
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-// import SvgUri from "expo-svg-uri";
 
 const { width, height } = Dimensions.get("window");
-// import Svg from "react-native-svg";
 import PendingSvg from "../../assets/images/PendingSvg";
 
 const PendingScreen = () => (
@@ -22,11 +20,11 @@ const PendingScreen = () => (
       <Feather name="x" size={32} color="#1D2029" />
     </TouchableOpacity>
     <PendingSvg />
-    {/* <SvgUri
-      width={"500"}
-      height={"500"}
-      source={require("../../assets/images/Pending2.svg")}
-    /> */}
+    <View style={styles.container}>
+      <Text style={{fontSize:20, fontWeight:'bold', lineHeight:50 }}>Ausstehend</Text>
+      <Text style={{color: '#ABB4BD', textAlign: 'center'}}>Bitte warten Sie, bis die Administration Ihr Konto uberpruft hat. Der Antrag auf Verifizierung ist steht noch aus.</Text>
+    </View>
+    <View />
   </View>
 );
 
@@ -46,6 +44,10 @@ const styles = StyleSheet.create({
   headerStyle: {
     width: "84%",
     marginBottom: 20
+  },
+  container: {
+    width: "84%",
+    alignItems: 'center'
   }
 });
 
