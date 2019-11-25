@@ -22,9 +22,9 @@ import Registration from "../screens/Authentication/RegistrationScreen";
 import Reset from "../screens/Authentication/ResetPassword";
 import VerifyEmail from "../screens/Authentication/VerifyEmail";
 import Pending from "../screens/Captions/PendingScreen";
-import Sent from '../screens/Captions/SentScreen'
-import Check from '../screens/Captions/CheckScreen'
-import Save from '../screens/Captions/SaveScreen'
+import Sent from "../screens/Captions/SentScreen";
+import Check from "../screens/Captions/CheckScreen";
+import Save from "../screens/Captions/SaveScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -33,21 +33,21 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    Auth,
+    Home: HomeScreen,
+    Notes: NotesScreen,
     Save,
     Check,
     Sent,
     Pending,
-    Auth,
     Reset,
     VerifyEmail,
     Login,
     TaskScreen,
     Registration,
     Sketch,
-    Home: HomeScreen,
     editImage,
-    GyroScope,
-    Notes: NotesScreen
+    GyroScope
   },
   config
 );

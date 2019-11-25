@@ -1,5 +1,5 @@
 import * as WebBrowser from "expo-web-browser";
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Platform,
@@ -13,31 +13,38 @@ import {
 } from "react-native";
 
 import WaveView from "./UnionIcon.js";
+
 // import Svg from 'react-native-svg';
 import SvgUri from "expo-svg-uri";
 import { LinearGradient } from "expo-linear-gradient";
 import Card from "./Card";
 import * as firebase from "firebase";
 export default function HomeScreen(props) {
+  const [tasks, setTasks] = useState([]);
+  fetch("https://alumont.herokuapp.com/taskdata")
+    .then(res => res.json())
+    .then(res => {
+      setTasks(res);
+    });
+
   return (
     <View style={styles.container}>
-      <LinearGradient 
-          colors={['#42CC9D', '#006F3D']}
-          start={[0.45, 0.6]}
-          end={[0.65, 0.98]}
-          style={{
-            height: Dimensions.get('window').height * 1.055,
-            width: Dimensions.get('window').width * 2.344,
-            position: 'absolute',
-            bottom: Dimensions.get('window').height * 0.65,
-            right: Dimensions.get('window').width * -0.162 * 2.344,
-            borderRadius: Dimensions.get('window').height * 0.527
-          }}
-        />
+      <LinearGradient
+        colors={["#42CC9D", "#006F3D"]}
+        start={[0.45, 0.6]}
+        end={[0.65, 0.98]}
+        style={{
+          height: Dimensions.get("window").height * 1.055,
+          width: Dimensions.get("window").width * 2.344,
+          position: "absolute",
+          bottom: Dimensions.get("window").height * 0.65,
+          right: Dimensions.get("window").width * -0.162 * 2.344,
+          borderRadius: Dimensions.get("window").height * 0.527
+        }}
+      />
       <ScrollView style={{ flex: 1 }}>
         <View style={{ height: 400 }}></View>
-       
-        
+
         <View
           style={{
             position: "absolute",
@@ -72,59 +79,41 @@ zu benutzen"
             Auftrage
           </Text>
 
-          <View
-            style={{
-              height: 100,
-              flexDirection: "row",
-              backgroundColor: "#FFF",
-              borderRadius: 10,
-              marginTop: 20
-            }}
-          >
-            <View style={{ flex: 2, padding: 20 }}>
-              <Text style={{ color: "#0A1F44", fontSize: 16 }}>
-                #1234567890
-              </Text>
-              <Text style={{ color: "#B0B7C3", fontSize: 14, marginTop: 8 }}>
-                St. Andrew’s #14, Frankfurt
-              </Text>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: "#FFBB37",
-                borderTopRightRadius: 10,
-                borderBottomRightRadius: 10
-              }}
-            ></View>
-          </View>
-
-          <View
-            style={{
-              height: 100,
-              flexDirection: "row",
-              backgroundColor: "#FFF",
-              borderRadius: 10,
-              marginTop: 20
-            }}
-          >
-            <View style={{ flex: 2, padding: 20 }}>
-              <Text style={{ color: "#0A1F44", fontSize: 16 }}>
-                #1234567890
-              </Text>
-              <Text style={{ color: "#B0B7C3", fontSize: 14, marginTop: 8 }}>
-                St. Andrew’s #14, Frankfurt
-              </Text>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: "#FFBB37",
-                borderTopRightRadius: 10,
-                borderBottomRightRadius: 10
-              }}
-            ></View>
-          </View>
+          {tasks.map(task => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  props.navigation.push("TaskScreen", { task: task })
+                }
+                style={{
+                  height: 100,
+                  flexDirection: "row",
+                  backgroundColor: "#FFF",
+                  borderRadius: 10,
+                  marginTop: 20
+                }}
+              >
+                <View style={{ flex: 2, padding: 20 }}>
+                  <Text style={{ color: "#0A1F44", fontSize: 16 }}>
+                    #1234567890
+                  </Text>
+                  <Text
+                    style={{ color: "#B0B7C3", fontSize: 14, marginTop: 8 }}
+                  >
+                    St. Andrew’s #14, Frankfurt
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    backgroundColor: "#FFBB37",
+                    borderTopRightRadius: 10,
+                    borderBottomRightRadius: 10
+                  }}
+                ></View>
+              </TouchableOpacity>
+            );
+          })}
         </View>
 
         <TouchableOpacity

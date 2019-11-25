@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { CheckBox } from "react-native-elements";
+import { TouchableOpacity } from "react-native";
 
 // create a component
 class TaskScreens extends Component {
@@ -41,6 +42,28 @@ class TaskScreens extends Component {
   };
 
   render() {
+    const {
+      id,
+      address,
+      piece,
+      ProdTime,
+      Prod,
+      receiptDate,
+      TargetCoating,
+      DeliveryDate,
+      DispatchedOn,
+      Term,
+      Status,
+      FromProdiction,
+      readyForShipment,
+      AssamblyInH,
+      AssamblyInNum,
+      AssamblyStart,
+      DueDate,
+      AssamblyEnd,
+      AssamblyInHResult,
+      installerDeplyment
+    } = this.props.navigation.state.params.task;
     return (
       <View style={styles.container}>
         <ScrollView
@@ -56,12 +79,11 @@ class TaskScreens extends Component {
             }}
           >
             <View style={{ flex: 1, justifyContent: "center" }}>
-              <Text style={{ color: "#0A1F44", fontSize: 20 }}>#123456789</Text>
-              <Text style={{ color: "#B0B7C3" }}>
-                St. Andrew’s #14, Frankfurt
-              </Text>
+              <Text style={{ color: "#0A1F44", fontSize: 20 }}>#{id}</Text>
+              <Text style={{ color: "#B0B7C3" }}>{address}</Text>
             </View>
-            <View
+            <TouchableOpacity
+              onPress={() => this.props.navigation.pop()}
               style={{
                 flex: 1,
                 alignItems: "flex-end",
@@ -69,8 +91,8 @@ class TaskScreens extends Component {
                 justifyContent: "center"
               }}
             >
-              <AntDesign name="arrowleft" size={50} color="#000" />
-            </View>
+              <AntDesign name="arrowleft" size={40} color="#000" />
+            </TouchableOpacity>
           </View>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <CheckBox
@@ -90,24 +112,24 @@ class TaskScreens extends Component {
             </Text>
           </View>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-            {this.Item("Piece", 1)}
-            {this.Item("Prod. time", 3.82)}
-            {this.Item("Prod. #", 13266)}
-            {this.Item("Receipt Dat", "28.08.2019")}
-            {this.Item("Target Coating", "13.09.2019")}
-            {this.Item("Delivery Date", "18.09.2019")}
-            {this.Item("Dispatched On", "Text here")}
-            {this.Item("Term", "Text here")}
-            {this.Item("Status", "Text here")}
-            {this.Item("From the Production", "Text here")}
-            {this.Item("Ready for Shipment", "Text here")}
-            {this.Item("Assembly in h (Target)", "0.00")}
-            {this.Item("Assembly Number", "0.00")}
-            {this.Item("Assembly Start", "01.0202.2019")}
-            {this.Item("Due Date", "01.0202.2019")}
-            {this.Item("Assembly End", "05.03.2019")}
-            {this.Item("Assembly in h (Result)", "0.00")}
-            {this.Item("Installer Deployment", "Text here")}
+            {this.Item("Piece", piece)}
+            {this.Item("Prod. time", ProdTime)}
+            {this.Item("Prod. #", Prod)}
+            {this.Item("Receipt Dat", receiptDate)}
+            {this.Item("Target Coating", TargetCoating)}
+            {this.Item("Delivery Date", DeliveryDate)}
+            {this.Item("Dispatched On", DispatchedOn)}
+            {this.Item("Term", Term)}
+            {this.Item("Status", Status)}
+            {this.Item("From the Production", FromProdiction)}
+            {this.Item("Ready for Shipment", readyForShipment)}
+            {this.Item("Assembly in h (Target)", AssamblyInH)}
+            {this.Item("Assembly Number", AssamblyInNum)}
+            {this.Item("Assembly Start", AssamblyStart)}
+            {this.Item("Due Date", DueDate)}
+            {this.Item("Assembly End", AssamblyEnd)}
+            {this.Item("Assembly in h (Result)", AssamblyInHResult)}
+            {this.Item("Installer Deployment", installerDeplyment)}
           </View>
         </ScrollView>
       </View>
