@@ -92,13 +92,13 @@ const LoginScreen = props => {
       <BottomSheet
         initialSnap={2}
         ref={bottomSheetRef}
-        snapPoints={["90%", 0, 0]}
+        snapPoints={["80%", 0, 0]}
         renderContent={() => (
           <View style={styles.panel}>
             <WebView
               originWhitelist={["*"]}
               source={{ uri: "https://www.alumont.com/" }}
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 0, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
             />
           </View>
         )}
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     width,
     height,
     flex: 1,
-    paddingTop: 40,
+    // paddingTop: 30,
     alignItems: "center",
     justifyContent: "space-around"
   },
@@ -157,21 +157,21 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   panel: {
-    height: height * 0.9,
+    height: height * 0.8,
     padding: 0,
     backgroundColor: "#F5f5f5",
-    paddingTop: 20,
+    // paddingTop: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    shadowColor: "#000000",
-    shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 5,
-    shadowOpacity: 0.4
+    // shadowColor: "#000000",
+    // shadowOffset: { width: 0, height: 0 },
+    // shadowRadius: 5,
+    // shadowOpacity: 0.4
   },
   header: {
-    backgroundColor: "#f7f5eee8",
+    backgroundColor: "#ffffff02",
     shadowColor: "#000000",
-    paddingTop: 20,
+    // paddingTop: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20
   },
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 8,
     borderRadius: 4,
-    backgroundColor: "#00000080",
+    backgroundColor: "#000000",
     marginBottom: 10
   }
 });

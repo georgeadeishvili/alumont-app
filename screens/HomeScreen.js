@@ -11,6 +11,7 @@ import {
   Dimensions,
   StatusBar
 } from "react-native";
+
 import WaveView from "./UnionIcon.js";
 // import Svg from 'react-native-svg';
 import SvgUri from "expo-svg-uri";
@@ -20,16 +21,23 @@ import * as firebase from "firebase";
 export default function HomeScreen(props) {
   return (
     <View style={styles.container}>
-      <ScrollView style={{ flex: 1 }}>
-        <View style={{ height: 50, backgroundColor: "#42CC9D" }}></View>
-        <SvgUri
-          style={{ marginTop: -100 }}
-          fill="#42CC9D"
-          width={Dimensions.get("window").width}
-          height="450"
-          source={require("./Union.svg")}
-          fillAll
+      <LinearGradient 
+          colors={['#42CC9D', '#006F3D']}
+          start={[0.45, 0.6]}
+          end={[0.65, 0.98]}
+          style={{
+            height: Dimensions.get('window').height * 1.055,
+            width: Dimensions.get('window').width * 2.344,
+            position: 'absolute',
+            bottom: Dimensions.get('window').height * 0.65,
+            right: Dimensions.get('window').width * -0.162 * 2.344,
+            borderRadius: Dimensions.get('window').height * 0.527
+          }}
         />
+      <ScrollView style={{ flex: 1 }}>
+        <View style={{ height: 400 }}></View>
+       
+        
         <View
           style={{
             position: "absolute",
