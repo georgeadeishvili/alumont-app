@@ -14,6 +14,7 @@ import SettingsScreen from "../screens/SettingsScreen";
 import NotesScreen from "../screens/NotesScreen";
 import TaskScreen from "../screens/TaskScreen";
 import editImage from "../screens/EditImage";
+import ShotImage from "../screens/EditImage/Camera";
 
 import Sketch from "../screens/Sketch";
 import Login from "../screens/Authentication/LoginScreen";
@@ -33,20 +34,21 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    // Auth,
-    // Home: HomeScreen,
-    // Notes: NotesScreen,
-    // Save,
-    // Check,
-    // Sent,
-    // Pending,
-    // Reset,
-    // VerifyEmail,
-    // Login,
-    // TaskScreen,
-    // Registration,
-    Sketch,
+    ShotImage,
     editImage,
+    Auth,
+    Home: HomeScreen,
+    Notes: NotesScreen,
+    Save,
+    Check,
+    Sent,
+    Pending,
+    Reset,
+    VerifyEmail,
+    Login,
+    TaskScreen,
+    Registration,
+    Sketch,
     GyroScope
   },
   config
