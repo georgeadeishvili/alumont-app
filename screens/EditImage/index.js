@@ -7,14 +7,16 @@ import {
   TouchableHighlight,
   TextInput,
   View,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from "react-native";
 import Gestures from "react-native-easy-gestures";
+import { FontAwesome } from "@expo/vector-icons";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      texts: [{ value: "test", selected: false }]
+      texts: []
     };
   }
   render() {
@@ -23,8 +25,7 @@ export default class App extends React.Component {
         <ImageBackground
           style={{ flex: 1, paddingTop: 20 }}
           source={{
-            uri:
-              "https://i.dailymail.co.uk/1s/2019/04/18/10/12427172-0-image-a-20_1555581069374.jpg"
+            uri: this.props.navigation.state.params.uri
           }}
         >
           <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
@@ -88,7 +89,7 @@ export default class App extends React.Component {
                     style={{
                       fontSize: 40,
                       color: "#FFF",
-                      backgroundColor: "#000"
+                      backgroundColor: "transparent"
                     }}
                   >
                     {txt.value}
@@ -97,6 +98,30 @@ export default class App extends React.Component {
               </Gestures>
             );
           })}
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "flex-end",
+              alignItems: "center",
+              padding: 20
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => this.props.navigation.pop()}
+              style={{
+                borderRadius: 40,
+                width: 80,
+                height: 80,
+                borderWidth: 3,
+                borderColor: "#FFF",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 20
+              }}
+            >
+              <FontAwesome name="repeat" color="#FFF" size={40} />
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     );
