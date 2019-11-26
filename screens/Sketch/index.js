@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import RNDraw from "./rn-draw-additional";
 import uuidv1 from "uuid/v1";
+import { Ionicons, MaterialIcons } from '@expo/vector-icons'
 // import { Svg } from "./rn-draw-additional/src/config";
 // const { G, Surface, Path } = Svg;
 
@@ -20,7 +21,8 @@ class Sketch extends Component {
     svgId: null,
     currentSVGInfo: null,
     svgObjects: [],
-    savedDrawingView: false
+    savedDrawingView: false,
+    modal: false
   };
   componentDidMount() {
     this.setState({
@@ -65,8 +67,13 @@ class Sketch extends Component {
     ) : (
       <View style={styles.container}>
         <View style={styles.container}>
-          <Text>React Native Draw</Text>
-          <View style={styles.btnContainer}>
+          <View style={styles.newHeader}>
+            <TouchableOpacity>
+              <Ionicons name='ios-arrow-round-back' size={50} color='#1B3554' />
+            </TouchableOpacity>
+            <Text style={styles.newHeaderText}>Notizen</Text>
+          </View>
+          {/* <View style={styles.btnContainer}>
             <TouchableOpacity
               onPress={this.clear}
               style={[styles.btn, styles.btnRed]}
@@ -85,7 +92,7 @@ class Sketch extends Component {
             >
               <Text style={styles.btnText}>Save</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
           <View style={styles.imageFrame}>
             {/* <Image
               style={styles.backgroundImg}
@@ -93,8 +100,10 @@ class Sketch extends Component {
             /> */}
             <RNDraw
               containerStyle={{
-                backgroundColor: "rgba(0,0,0,0.01)",
-                width: Dimensions.get("window").width
+                backgroundColor: "rgba(255, 255, 255, 1)",
+                width: Dimensions.get("window").width * 0.9,
+                height: Dimensions.get('window').height * 0.733,
+                borderRadius: 8
               }}
               rewind={undo => {
                 this._undo = undo;
@@ -110,10 +119,22 @@ class Sketch extends Component {
               svgId={this.state.svgId}
             />
           </View>
-
-          <View>
-            <TouchableOpacity onPress={this.swapView}>
-              <Text>Saved Drawings</Text>
+          {this.state.modal && (<TouchableOpacity style={styles.modalStyle} onPress={() => this.setState({modal: false})} />)}
+          <View style={styles.newBtnWrapper}>
+            {this.state.modal && (
+              <View style={styles.newBtnModalWrapper}>
+                <TouchableOpacity style={styles.newBtnModal}>
+                  <Text style={styles.newBtnModalText}>E-Mail senden</Text>
+                  <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.newBtnModal}>
+                  <Text style={styles.newBtnModalText}>Speichern</Text>
+                  <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
+                </TouchableOpacity>
+              </View>
+            )}
+            <TouchableOpacity style={styles.newBtn} onPress={() => this.setState({ modal: !this.state.modal })}>
+              <Text style={styles.newBtnText}>Fortfahren</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -124,15 +145,25 @@ class Sketch extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: "#F6F9FA",
     position: "absolute",
     top: 0,
     right: 0,
     left: 0,
-    bottom: 0
+    bottom: 0,
+    alignItems: 'center'
   },
   imageFrame: {
-    flex: 1
+    height: Dimensions.get('window').height * 0.733,
+    shadowColor: "#0A1646",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 2,
   },
   btnContainer: {
     flexDirection: "row",
@@ -169,7 +200,71 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "90%",
     position: "absolute"
+  },
+  newHeader: {
+    width: Dimensions.get('window').width * 0.8,
+    flexDirection: 'row',
+    marginTop: 50,
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  newHeaderText: {
+    fontSize: 23,
+    color: '#1B3554',
+    lineHeight: 32,
+    fontWeight: 'bold'
+  },
+  newBtnWrapper: {
+    width: Dimensions.get('window'). width,
+    alignItems: 'flex-end',
+    position: 'absolute',
+    bottom: 50,
+
+  },
+  newBtn: {
+    width: Dimensions.get('window').width * 0.7,
+    height: 45,
+    backgroundColor: '#006F3D',
+    justifyContent: 'center',
+    borderRadius: 2
+  },
+  newBtnText: {
+    color: '#FFF',
+    marginLeft: 10,
+    fontWeight: 'bold',
+
+  },
+  modalStyle: {
+    position: 'absolute',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    top: 0,
+    left: 0,
+    backgroundColor: '#10101015'
+  },
+  newBtnModalWrapper: {
+    width: Dimensions.get('window'). width,
+    alignItems: 'flex-end',
+  },
+  newBtnModal: {
+    width: Dimensions.get('window').width * 0.7,
+    height: 45,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    borderLeftColor: '#42CC9D',
+    borderLeftWidth: 3,
+    paddingRight: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  newBtnModalText: {
+    color: '#8A94A6',
+    fontSize: 14,
+    lineHeight: 24,
+    marginLeft: 10
   }
+
 });
 
 //make this component available to the app
