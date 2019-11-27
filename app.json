@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "German App",
-    "slug": "german-app",
+    "name": "Alumont App",
+    "slug": "alumont-app",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "extra": {
@@ -22,7 +22,7 @@
     "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -30,7 +30,13 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ai.systemcorp.alumont",
+      "NSCameraUsageDescription": "This app uses the camera to help workers share their construction visual status to employers"
+    },
+    "android": {
+      "package": "ai.systemcorp.alumont",
+      "versionCode": 1
     }
   }
 }

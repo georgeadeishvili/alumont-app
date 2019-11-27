@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
-import { View, Text, Dimensions, TouchableOpacity } from "react-native";
-import { MaterialIcons, Entypo } from "@expo/vector-icons";
+import { View, ScrollView, Text, Dimensions, TouchableOpacity, StyleSheet } from "react-native";
+import { MaterialIcons, Entypo, Feather } from "@expo/vector-icons";
 import Note from "./Note";
 import { LinearGradient } from "expo-linear-gradient";
 const NotesScreen = props => {
@@ -21,14 +21,16 @@ const NotesScreen = props => {
           alignItems: "center"
         }}
       >
-        <MaterialIcons
-          size={40}
-          color="#1B3554"
-          name="arrow-back"
-        ></MaterialIcons>
-        <Text style={{ fontSize: 25, fontWeight: "bold" }}>Notes</Text>
+        <TouchableOpacity onPress={() => props.navigation.goBack()} >
+          <MaterialIcons
+            size={40}
+            color="#1B3554"
+            name="arrow-back"
+          />
+        </TouchableOpacity>
+        <Text style={{ fontSize: 25, fontWeight: "bold" }}>Notizen</Text>
       </View>
-      <View
+      <ScrollView
         style={{
           backgroundColor: "#FFF",
           minHeight: 100,
@@ -36,12 +38,30 @@ const NotesScreen = props => {
           borderRadius: 10
         }}
       >
-        {[1, 2, 3].map(item => {
-          return <Note onNotePress={() => setModal(true)} />;
+        {[1, 2, 3].map((item, index) => {
+          return <Note key={index} onNotePress={() => setModal(true)} />;
         })}
+      </ScrollView>
+      {modal && (<TouchableOpacity style={styles.modalStyle} onPress={() => setModal(false)} />)}
+      <View style={styles.newBtnWrapper}>
+        {modal && (
+          <View style={styles.newBtnModalWrapper}>
+            <TouchableOpacity style={styles.newBtnModal}>
+              <Text style={styles.newBtnModalText}>Bild aufnehmen</Text>
+              <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.newBtnModal}>
+              <Text style={styles.newBtnModalText}>Sketch erstellen</Text>
+              <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
+            </TouchableOpacity>
+          </View>
+        )}
+        <TouchableOpacity style={styles.newBtn} onPress={() => setModal(!modal)}>
+          <Text style={styles.newBtnText}>Neue Notizen</Text>
+          <Feather name='plus' size={24} color='#FFF' />
+        </TouchableOpacity>
       </View>
-
-      {modal && (
+      {/* {modal && (
         <Fragment>
           <View
             style={{
@@ -115,9 +135,65 @@ const NotesScreen = props => {
             </LinearGradient>
           </View>
         </Fragment>
-      )}
+      )} */}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  newBtnWrapper: {
+    width: Dimensions.get('window'). width,
+    alignItems: 'flex-end',
+    position: 'absolute',
+    bottom: 50,
+
+  },
+  newBtn: {
+    width: Dimensions.get('window').width * 0.7,
+    height: 45,
+    backgroundColor: '#006F3D',
+    justifyContent: 'space-between',
+    borderRadius: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingRight: 10
+  },
+  newBtnText: {
+    color: '#FFF',
+    marginLeft: 10,
+    fontWeight: 'bold',
+
+  },
+  modalStyle: {
+    position: 'absolute',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    top: 0,
+    left: 0,
+    backgroundColor: '#10101015'
+  },
+  newBtnModalWrapper: {
+    width: Dimensions.get('window'). width,
+    alignItems: 'flex-end',
+  },
+  newBtnModal: {
+    width: Dimensions.get('window').width * 0.7,
+    height: 45,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    borderLeftColor: '#42CC9D',
+    borderLeftWidth: 3,
+    paddingRight: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  newBtnModalText: {
+    color: '#8A94A6',
+    fontSize: 14,
+    lineHeight: 24,
+    marginLeft: 10
+  }
+})
 
 export default NotesScreen;

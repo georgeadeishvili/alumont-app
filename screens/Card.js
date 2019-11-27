@@ -3,7 +3,7 @@ import { View, Image, Text } from "react-native";
 import { TouchableOpacity } from "react-native";
 const Card = props => {
   return (
-    <View
+    <TouchableOpacity
       style={{
         height: 140,
         backgroundColor: "#FFFFFF",
@@ -11,6 +11,7 @@ const Card = props => {
         top: 130,
         padding: 20
       }}
+      onPress={() => props.onPress()}
     >
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Image
@@ -26,20 +27,20 @@ const Card = props => {
           {props.title}
         </Text>
         <View style={{ flex: 1, alignItems: "flex-end" }}>
-          <TouchableOpacity onPress={() => props.onPress()}>
+          
             <Image
               style={{ width: 50, height: 60 }}
               resizeMode={"contain"}
               source={require("./SVG/back.png")}
             />
-          </TouchableOpacity>
+          
         </View>
       </View>
 
-      <Text style={{ fontSize: 16, marginLeft: 8, marginTop: 8 }}>
+      <Text style={{ fontSize: 14, marginLeft: 8, marginTop: 8 }}>
         {props.des}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

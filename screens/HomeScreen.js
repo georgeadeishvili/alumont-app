@@ -1,5 +1,5 @@
 import * as WebBrowser from "expo-web-browser";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   Platform,
@@ -21,11 +21,19 @@ import Card from "./Card";
 import * as firebase from "firebase";
 export default function HomeScreen(props) {
   const [tasks, setTasks] = useState([]);
-  fetch("https://alumont.herokuapp.com/taskdata")
+  useEffect(() => {
+    fetch("https://alumont.herokuapp.com/taskdata")
     .then(res => res.json())
     .then(res => {
       setTasks(res);
     });
+  }, [])
+  
+
+  function generateColor() {
+    let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+    return color
+  }
 
   return (
     <View style={styles.container}>
@@ -79,7 +87,7 @@ zu benutzen"
             Auftrage
           </Text>
 
-          {tasks.map(task => {
+          {tasks.map((task, index) => {
             return (
               <TouchableOpacity
                 onPress={() =>
@@ -92,6 +100,7 @@ zu benutzen"
                   borderRadius: 10,
                   marginTop: 20
                 }}
+                key={index}
               >
                 <View style={{ flex: 2, padding: 20 }}>
                   <Text style={{ color: "#0A1F44", fontSize: 16 }}>
@@ -106,7 +115,7 @@ zu benutzen"
                 <View
                   style={{
                     flex: 1,
-                    backgroundColor: "#FFBB37",
+                    backgroundColor: `${generateColor()}`,
                     borderTopRightRadius: 10,
                     borderBottomRightRadius: 10
                   }}
