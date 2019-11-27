@@ -68,7 +68,7 @@ class Sketch extends Component {
       <View style={styles.container}>
         <View style={styles.container}>
           <View style={styles.newHeader}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <Ionicons name='ios-arrow-round-back' size={50} color='#1B3554' />
             </TouchableOpacity>
             <Text style={styles.newHeaderText}>Notizen</Text>
@@ -123,11 +123,11 @@ class Sketch extends Component {
           <View style={styles.newBtnWrapper}>
             {this.state.modal && (
               <View style={styles.newBtnModalWrapper}>
-                <TouchableOpacity style={styles.newBtnModal}>
+                <TouchableOpacity style={styles.newBtnModal} onPress={() => this.props.navigation.navigate('Sent')}>
                   <Text style={styles.newBtnModalText}>E-Mail senden</Text>
                   <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.newBtnModal}>
+                <TouchableOpacity style={styles.newBtnModal} onPress={() => this.props.navigation.navigate('Save')}>
                   <Text style={styles.newBtnModalText}>Speichern</Text>
                   <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
                 </TouchableOpacity>
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window'). width,
     alignItems: 'flex-end',
     position: 'absolute',
-    bottom: 50,
+    bottom: 40,
 
   },
   newBtn: {

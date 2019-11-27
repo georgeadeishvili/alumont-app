@@ -130,9 +130,9 @@ zu benutzen"
             firebase.auth().signOut();
             props.navigation.navigate("Login");
           }}
-          style={{ width: 100, height: 50, backgroundColor: "black" }}
+          style={{ width: Dimensions.get('window').width, justifyContent: 'center', alignItems: 'center' }}
         >
-          <Text style={{ color: "#FFF" }}>logout</Text>
+          <Text style={{ color: "#B0B7C3", textDecorationLine: 'underline', marginBottom: 15 }}>Logout</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>

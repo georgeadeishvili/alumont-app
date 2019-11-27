@@ -46,11 +46,11 @@ const NotesScreen = props => {
       <View style={styles.newBtnWrapper}>
         {modal && (
           <View style={styles.newBtnModalWrapper}>
-            <TouchableOpacity style={styles.newBtnModal}>
+            <TouchableOpacity style={styles.newBtnModal} onPress={() => props.navigation.navigate('ShotImage')}>
               <Text style={styles.newBtnModalText}>Bild aufnehmen</Text>
               <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.newBtnModal}>
+            <TouchableOpacity style={styles.newBtnModal} onPress={() => props.navigation.navigate('Sketch')}>
               <Text style={styles.newBtnModalText}>Sketch erstellen</Text>
               <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
             </TouchableOpacity>

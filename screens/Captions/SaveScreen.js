@@ -11,7 +11,7 @@ import Saved from './saved'
 
 const { width, height } = Dimensions.get("window");
 
-const SaveScreen = () => (
+const SaveScreen = (props) => (
     <View style={styles.mainWrapper}>
         <TouchableOpacity
             style={styles.goBack}
@@ -26,6 +26,7 @@ const SaveScreen = () => (
         </View>
         <TouchableOpacity
             style={styles.button}
+            onPress={() => props.navigation.navigate('Home')}
         >
             <Text style={{color: '#FFF'}}>Haupt</Text>
         </TouchableOpacity>

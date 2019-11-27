@@ -31,8 +31,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ai.systemcorp.alumont",
-      "NSCameraUsageDescription": "This app uses the camera to help workers share their construction visual status to employers"
+      "bundleIdentifier": "ai.systemcorp.alumont"
     },
     "android": {
       "package": "ai.systemcorp.alumont",

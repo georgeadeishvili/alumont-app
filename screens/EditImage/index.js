@@ -25,7 +25,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground
-          style={{ flex: 1, paddingTop: 20 }}
+          style={{ flex: 1, paddingTop: 50 }}
           source={{
             uri:  this.props.navigation.state.params.uri
           }}
@@ -39,14 +39,16 @@ export default class App extends React.Component {
               justifyContent: 'center',
               alignItems: 'center',
               paddingTop: 2.5
-            }}>
+              }}
+              onPress={() => this.props.navigation.goBack() }
+            >
               <Ionicons name='md-arrow-round-back' size={30} color='#FFF' />
             </TouchableOpacity>
             <TouchableHighlight
               onPress={() => {
                 this.state.texts.push({
                   value: "Type Something...",
-                  selected: false
+                  selected: false,
                 });
                 this.setState({ texts: this.state.texts });
                 console.log(this.state.texts);
@@ -71,12 +73,13 @@ export default class App extends React.Component {
                 scalable={true}
                 style={{ position: "absolute" }}
                 onChange={(event, styles) => {}}
+                key={index}
               >
                 {txt.selected ? (
                   <TextInput
                     style={{
                       fontSize: 40,
-                      backgroundColor: "black",
+                      backgroundColor: "transparent",
                       color: "#FFF"
                     }}
                     value={this.state.txt}
@@ -139,11 +142,11 @@ export default class App extends React.Component {
           <View style={styles.newBtnWrapper}>
             {this.state.modal && (
               <View style={styles.newBtnModalWrapper}>
-                <TouchableOpacity style={styles.newBtnModal}>
+                <TouchableOpacity style={styles.newBtnModal} onPress={() => this.props.navigation.navigate('Sent')}>
                   <Text style={styles.newBtnModalText}>E-Mail senden</Text>
                   <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.newBtnModal}>
+                <TouchableOpacity style={styles.newBtnModal} onPress={() => this.props.navigation.navigate('Save')}>
                   <Text style={styles.newBtnModalText}>Speichern</Text>
                   <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
                 </TouchableOpacity>
@@ -161,7 +164,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    //paddingTop: 50,
     flex: 1
   },
   newBtnWrapper: {

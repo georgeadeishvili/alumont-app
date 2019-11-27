@@ -38,7 +38,7 @@ export default class CameraExample extends React.Component {
             type={this.state.type}
           >
             <View style={{ flex: 1 }}>
-              <View
+              <TouchableOpacity
                 style={{
                   width: 60,
                   height: 60,
@@ -49,9 +49,10 @@ export default class CameraExample extends React.Component {
                   justifyContent: "center",
                   alignItems: "center"
                 }}
+                onPress={() => this.props.navigation.goBack()}
               >
                 <Ionicons name="md-arrow-round-back" size={30} color="#FFF" />
-              </View>
+              </TouchableOpacity>
             </View>
             <View
               style={{
