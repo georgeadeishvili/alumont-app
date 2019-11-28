@@ -1,10 +1,12 @@
 import React from "react";
-import { Magnetometer } from "expo-sensors";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { DeviceMotion } from "expo-sensors";
+import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from "react-native";
+import { Circle, XLevel, YLevel } from './Levels'
+import { Ionicons, MaterialIcons } from '@expo/vector-icons'
 
-export default class MagnetometerSensor extends React.Component {
+export default class DeviceMotionSensor extends React.Component {
   state = {
-    MagnetometerData: {}
+    DeviceMotionData: {}
   };
 
   componentDidMount() {
@@ -15,25 +17,25 @@ export default class MagnetometerSensor extends React.Component {
     this._unsubscribe();
   }
 
-  _toggle = () => {
+  _toggle = async () => {
     if (this._subscription) {
-      this._unsubscribe();
+      await this._unsubscribe();
     } else {
-      this._subscribe();
+      await this._subscribe();
     }
   };
 
   _slow = () => {
-    Magnetometer.setUpdateInterval(1000);
+    DeviceMotion.setUpdateInterval(1000);
   };
 
   _fast = () => {
-    Magnetometer.setUpdateInterval(16);
+    DeviceMotion.setUpdateInterval(16);
   };
 
   _subscribe = () => {
-    this._subscription = Magnetometer.addListener(result => {
-      this.setState({ MagnetometerData: result });
+    this._subscription = DeviceMotion.addListener(({rotation}) => {
+      this.setState({ DeviceMotionData: rotation });
     });
   };
 
@@ -43,28 +45,30 @@ export default class MagnetometerSensor extends React.Component {
   };
 
   render() {
-    let { x, y, z } = this.state.MagnetometerData;
+    let { alpha, beta, gamma } = this.state.DeviceMotionData;
 
     return (
-      <View style={styles.sensor}>
-        <Text>Magnetometer:</Text>
-        <Text>
-          x: {round(x)} y: {round(y)} z: {round(z)}
-        </Text>
-
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={this._toggle} style={styles.button}>
-            <Text>Toggle</Text>
+      <View style={styles.container}>
+        <View style={styles.newHeader}>
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Ionicons name='ios-arrow-round-back' size={50} color='#1B3554' />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this._slow}
-            style={[styles.button, styles.middleButton]}
-          >
-            <Text>Slow</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._fast} style={styles.button}>
-            <Text>Fast</Text>
-          </TouchableOpacity>
+          <Text style={styles.newHeaderText}>Gyroscope</Text>
+        </View>
+        <View style={styles.sensor}>
+          <View style={styles.gyroscopeWrapper}>
+            <XLevel x={round(gamma)} />
+            <View style={styles.rowWrapper}>
+              <View style={styles.circleWrapper}>
+                <Circle x={round(gamma)} y={round(beta)} />
+                <View style={styles.coordinates}>
+                  <Text style={styles.coordinateText}>x = {round(gamma)}</Text>
+                  <Text style={styles.coordinateText}>y = {round(beta)}</Text>
+                </View>
+              </View>
+              <YLevel y={round(beta)} />
+            </View>
+          </View>
         </View>
       </View>
     );
@@ -76,12 +80,13 @@ function round(n) {
     return 0;
   }
 
-  return Math.floor(n * 100) / 100;
+  return Math.floor(n * 0.7 * 180 / 3.14);
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   buttonContainer: {
     flexDirection: "row",
@@ -101,7 +106,46 @@ const styles = StyleSheet.create({
     borderColor: "#ccc"
   },
   sensor: {
-    marginTop: 15,
+    marginTop: 55,
     paddingHorizontal: 10
-  }
+  },
+  gyroscopeWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20
+  },
+  rowWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 20
+  },
+  circleWrapper: {
+    width: Dimensions.get('window').width * 0.6
+  },
+  coordinates: {
+    flexDirection: 'row',
+    width: '80%',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: 20
+  },
+  coordinateText: {
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  newHeader: {
+    width: Dimensions.get('window').width * 0.8,
+    flexDirection: 'row',
+    marginTop: 50,
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  newHeaderText: {
+    fontSize: 23,
+    color: '#1B3554',
+    lineHeight: 32,
+    fontWeight: 'bold'
+  },
+
 });

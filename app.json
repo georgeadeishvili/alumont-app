@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "German App",
-    "slug": "german-app",
+    "name": "Alumont App",
+    "slug": "alumont-app",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "extra": {
@@ -17,12 +17,12 @@
       }
     },
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -30,7 +30,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ai.systemcorp.alumont"
+    },
+    "android": {
+      "package": "ai.systemcorp.alumont",
+      "versionCode": 1
     }
   }
 }

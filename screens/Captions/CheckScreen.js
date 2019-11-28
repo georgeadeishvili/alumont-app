@@ -11,7 +11,7 @@ import EmailSent from './email-sent'
 
 const { width, height } = Dimensions.get("window");
 
-const CheckScreen = () => (
+const CheckScreen = (props) => (
     <View style={styles.mainWrapper}>
         <TouchableOpacity
             style={styles.goBack}
@@ -26,6 +26,7 @@ const CheckScreen = () => (
         </View>
         <TouchableOpacity
             style={styles.button}
+            onPress={() => props.navigation.navigate('Home')}
         >
             <Text style={{color: '#FFF'}}>Zur Mail gehen</Text>
         </TouchableOpacity>
