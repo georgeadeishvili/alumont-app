@@ -4,7 +4,11 @@ import { MaterialIcons, Entypo } from "@expo/vector-icons";
 import Note from "./Note";
 import { LinearGradient } from "expo-linear-gradient";
 const NotesScreen = props => {
+
+
+
   const [modal, setModal] = useState(false);
+ fetch('')
   return (
     <View
       style={{
