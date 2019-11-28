@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add expo-camera@~7.0.0
+  /usr/local/Cellar/node/12.10.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-native-view-shot@~2.6.0
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/:/Users/odin/Library/Android/sdk/emulator:/Users/odin/Library/Android/sdk/tools:/Users/odin/Library/Android/sdk/tools/bin:/Users/odin/Library/Android/sdk/platform-tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
@@ -37,6 +37,7 @@ npm manifest:
       "@react-navigation/web": "^1.0.0-alpha.9",
       "expo": "^35.0.0",
       "expo-asset": "^7.0.0",
+      "expo-camera": "~7.0.0",
       "expo-constants": "^7.0.0",
       "expo-font": "^7.0.0",
       "expo-linear-gradient": "^7.0.1",
@@ -3054,6 +3055,14 @@ Lockfile:
       blueimp-md5 "^2.10.0"
       path-browserify "^1.0.0"
       url-parse "^1.4.4"
+  
+  expo-camera@~7.0.0:
+    version "7.0.0"
+    resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-7.0.0.tgz#3beee6c88df4d87dc3d0daefc8a9b3f5864a63bd"
+    integrity sha512-OukSvj9dzrTdADDfMZQlxfCyLjwg/nyTm2u9NDFQh6poEmu+IE2gn5ICnc7pmqR+ctAmU312KiRcLoBe/6sfIw==
+    dependencies:
+      lodash "^4.6.0"
+      prop-types "^15.6.0"
   
   expo-constants@^7.0.0, expo-constants@~7.0.0:
     version "7.0.1"

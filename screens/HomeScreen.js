@@ -22,17 +22,18 @@ import * as firebase from "firebase";
 export default function HomeScreen(props) {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    fetch("https://alumont.herokuapp.com/taskdata")
-    .then(res => res.json())
-    .then(res => {
-      setTasks(res);
-    });
-  }, [])
-  
+    fetch("http://167.71.35.237/taskdata")
+      .then(res => res.json())
+      .then(res => {
+        setTasks(res);
+      });
+  }, []);
 
   function generateColor() {
-    let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
-    return color
+    let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+      Math.random() * 255
+    )}, ${Math.floor(Math.random() * 255)})`;
+    return color;
   }
 
   return (
@@ -130,9 +131,21 @@ zu benutzen"
             firebase.auth().signOut();
             props.navigation.navigate("Login");
           }}
-          style={{ width: Dimensions.get('window').width, justifyContent: 'center', alignItems: 'center' }}
+          style={{
+            width: Dimensions.get("window").width,
+            justifyContent: "center",
+            alignItems: "center"
+          }}
         >
-          <Text style={{ color: "#B0B7C3", textDecorationLine: 'underline', marginBottom: 15 }}>Logout</Text>
+          <Text
+            style={{
+              color: "#B0B7C3",
+              textDecorationLine: "underline",
+              marginBottom: 15
+            }}
+          >
+            Logout
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>

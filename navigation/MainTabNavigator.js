@@ -34,10 +34,10 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
+    ShotImage,
     Auth,
     Home: HomeScreen,
     Notes: NotesScreen,
-    ShotImage,
     editImage,
     Save,
     Check,
