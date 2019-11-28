@@ -15,6 +15,8 @@ import {
 import Gestures from "react-native-easy-gestures";
 // import { takeSnapshotAsync } from "expo";
 import ViewShot from "react-native-view-shot";
+
+import * as firebase from "firebase";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 export default class App extends React.Component {
   constructor(props) {
@@ -35,33 +37,69 @@ export default class App extends React.Component {
     }
     return result;
   }
-  async ScreenShot() {
+  async saveImage() {
+    const { userId } = this.props.navigation.state.params;
     this.setState({ takingScreenShot: true }, () => {
       this.refs.viewShot.capture().then(async uri => {
         console.log("do something with ", uri);
         // alert(uri);
+        let photoId = this.makeid(9);
         let formData = new FormData();
         formData.append("photo", {
           uri,
-          name: "photo",
+          name: photoId,
           type: "image/png"
         });
 
-        // const xhr = new XMLHttpRequest();
+        formData.append("save", 1);
 
-        // xhr.onload = () => {
-        //   if (xhr.status < 400) {
-        //     // succeeded
-        //   } else {
-        //     const error = new Error(xhr.response);
-        //   }
-        // };
+        firebase
+          .database()
+          .ref("users/" + userId)
+          .push({
+            photo: "http://167.71.35.237/uploads/" + photoId
+          });
 
-        // xhr.onerror = error => {};
+        await fetch("http://167.71.35.237/upload", {
+          method: "POST",
+          body: formData,
+          header: {
+            "Content-type": "multipart/form-data"
+          }
+        })
+          .then(res => {
+            // alert(JSON.stringify(res));
+            this.setState({ takingScreenShot: false }, () => {
+              this.props.navigation.navigate("Save");
+            });
+          })
+          .catch(e => {
+            // alert(JSON.stringify(e.response));
+          });
+      });
+    });
+  }
+  async ScreenShot() {
+    const { userId } = this.props.navigation.state.params;
+    this.setState({ takingScreenShot: true }, () => {
+      this.refs.viewShot.capture().then(async uri => {
+        console.log("do something with ", uri);
+        // alert(uri);
+        let photoId = this.makeid(9);
+        let formData = new FormData();
+        formData.append("photo", {
+          uri,
+          name: photoId,
+          type: "image/png"
+        });
 
-        // xhr.open("PUT", "http://167.71.35.237/upload");
-        // xhr.setRequestHeader("content-type", "image/png");
-        // xhr.send({ uri });
+        firebase
+          .database()
+          .ref("users/" + userId)
+          .push({
+            photo: "http://167.71.35.237/uploads/" + photoId
+          });
+
         await fetch("http://167.71.35.237/upload", {
           method: "POST",
           body: formData,
@@ -245,7 +283,7 @@ export default class App extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={styles.newBtnModal}
-                      onPress={() => this.props.navigation.navigate("Save")}
+                      onPress={() => this.saveImage()}
                     >
                       <Text style={styles.newBtnModalText}>Speichern</Text>
                       <MaterialIcons

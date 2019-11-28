@@ -65,7 +65,9 @@ export default function HomeScreen(props) {
         >
           <Card
             onPress={() => {
-              props.navigation.navigate("Notes");
+              props.navigation.navigate("Notes", {
+                userId: props.navigation.state.params.userId
+              });
             }}
             title="Notizen"
             des="Erstelle Notizen, Bilder, etc."
@@ -105,7 +107,7 @@ zu benutzen"
               >
                 <View style={{ flex: 2, padding: 20 }}>
                   <Text style={{ color: "#0A1F44", fontSize: 16 }}>
-                    #1234567890
+                    #{task.id}
                   </Text>
                   <Text
                     style={{ color: "#B0B7C3", fontSize: 14, marginTop: 8 }}

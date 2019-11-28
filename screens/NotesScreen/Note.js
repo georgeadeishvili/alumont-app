@@ -4,11 +4,11 @@ import { Ionicons } from "@expo/vector-icons";
 
 const Note = props => {
   return (
-    <TouchableOpacity
-      onPress={() => props.onNotePress()}
-      style={{ height: 108, flexDirection: "row", paddingHorizontal: 12 }}
-    >
-      <View style={{ width: 80, justifyContent: "center" }}>
+    <View style={{ height: 108, flexDirection: "row", paddingHorizontal: 12 }}>
+      <TouchableOpacity
+        onPress={() => props.onNotePress()}
+        style={{ width: 80, justifyContent: "center" }}
+      >
         <View
           style={{
             width: 60,
@@ -17,22 +17,30 @@ const Note = props => {
             backgroundColor: "#007FFF"
           }}
         ></View>
-      </View>
+      </TouchableOpacity>
       <View style={{ flex: 1, paddingBottom: 8 }}>
         <View style={{ flexDirection: "row", flex: 1 }}>
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <Text style={{ fontSize: 16, fontWeight: "600" }}>Sketch #1</Text>
-            <Text>#21513215135</Text>
-          </View>
-          <View style={{ width: 30, justifyContent: "center" }}>
+          <TouchableOpacity
+            onPress={() => props.onNotePress()}
+            style={{ flex: 1, justifyContent: "center" }}
+          >
+            <Text style={{ fontSize: 16, fontWeight: "600" }}>
+              Sketch #{props.index + 1}
+            </Text>
+            {/* <Text>#21513215135</Text> */}
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props.onRemove()}
+            style={{ width: 30, justifyContent: "center" }}
+          >
             <Ionicons name="md-trash" color="#1B3554" size={30} />
-          </View>
+          </TouchableOpacity>
         </View>
         <View
           style={{ height: 2, backgroundColor: "#F1F2F4", marginBottom: 8 }}
         ></View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 

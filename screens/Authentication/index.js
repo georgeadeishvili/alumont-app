@@ -16,6 +16,9 @@ export default class Loading extends React.Component {
   // Initialize Firebase
   constructor(props) {
     super(props);
+    this.state = {
+      userId: null
+    };
     if (!firebase.apps.length) {
       firebase.initializeApp(this.firebaseConfig);
     }
@@ -24,11 +27,10 @@ export default class Loading extends React.Component {
   }
 
   onAuthStateChanged = user => {
-    this.setState({ isAuthenticationReady: true });
+    this.setState({ isAuthenticationReady: true, userId: user.uid });
     this.setState({ isAuthenticated: !!user });
-
     if (user) {
-      this.props.navigation.navigate("Home");
+      this.props.navigation.navigate("Home", { userId: user.uid });
     } else {
       this.props.navigation.navigate("Login");
     }

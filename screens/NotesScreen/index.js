@@ -1,14 +1,37 @@
-import React, { useState, Fragment } from "react";
-import { View, ScrollView, Text, Dimensions, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState, Fragment, useEffect } from "react";
+import {
+  View,
+  ScrollView,
+  Text,
+  Dimensions,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native";
 import { MaterialIcons, Entypo, Feather } from "@expo/vector-icons";
 import Note from "./Note";
+import * as firebase from "firebase";
 import { LinearGradient } from "expo-linear-gradient";
 const NotesScreen = props => {
-
-
-
   const [modal, setModal] = useState(false);
- fetch('')
+  const [photos, setPhotos] = useState([]);
+  const { userId } = props.navigation.state.params;
+
+  useEffect(() => {
+    var recentPostsRef = firebase.database().ref("/users/" + userId);
+    recentPostsRef.once("value").then(snap => {
+      let keys = [];
+      let counts = [];
+      snap.forEach(function(item) {
+        var itemVal = item.val();
+        keys.push({ ...itemVal, key: item.key });
+      });
+
+      // snapshot.val() is the dictionary with all your keys/values from the '/store' path
+      // alert(JSON.stringify(keys));
+      setPhotos(keys);
+    });
+  });
+
   return (
     <View
       style={{
@@ -25,12 +48,8 @@ const NotesScreen = props => {
           alignItems: "center"
         }}
       >
-        <TouchableOpacity onPress={() => props.navigation.goBack()} >
-          <MaterialIcons
-            size={40}
-            color="#1B3554"
-            name="arrow-back"
-          />
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
+          <MaterialIcons size={40} color="#1B3554" name="arrow-back" />
         </TouchableOpacity>
         <Text style={{ fontSize: 25, fontWeight: "bold" }}>Notizen</Text>
       </View>
@@ -42,27 +61,54 @@ const NotesScreen = props => {
           borderRadius: 10
         }}
       >
-        {[1, 2, 3].map((item, index) => {
-          return <Note key={index} onNotePress={() => setModal(true)} />;
+        {photos.map((item, index) => {
+          return (
+            <Note
+              index={index}
+              key={index}
+              item={item}
+              onRemove={() => {
+                firebase
+                  .database()
+                  .ref("/users/" + userId + "/" + item.key)
+                  .remove();
+              }}
+              onNotePress={() => props.navigation.push("ViewPhoto", { item })}
+            />
+          );
         })}
       </ScrollView>
-      {modal && (<TouchableOpacity style={styles.modalStyle} onPress={() => setModal(false)} />)}
+      {modal && (
+        <TouchableOpacity
+          style={styles.modalStyle}
+          onPress={() => setModal(false)}
+        />
+      )}
       <View style={styles.newBtnWrapper}>
         {modal && (
           <View style={styles.newBtnModalWrapper}>
-            <TouchableOpacity style={styles.newBtnModal} onPress={() => props.navigation.navigate('ShotImage')}>
+            <TouchableOpacity
+              style={styles.newBtnModal}
+              onPress={() => props.navigation.navigate("ShotImage", { userId })}
+            >
               <Text style={styles.newBtnModalText}>Bild aufnehmen</Text>
-              <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
+              <MaterialIcons name="navigate-next" size={24} color="#4E5D78" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.newBtnModal} onPress={() => props.navigation.navigate('Sketch')}>
+            <TouchableOpacity
+              style={styles.newBtnModal}
+              onPress={() => props.navigation.navigate("Sketch", { userId })}
+            >
               <Text style={styles.newBtnModalText}>Sketch erstellen</Text>
-              <MaterialIcons name='navigate-next' size={24} color='#4E5D78' />
+              <MaterialIcons name="navigate-next" size={24} color="#4E5D78" />
             </TouchableOpacity>
           </View>
         )}
-        <TouchableOpacity style={styles.newBtn} onPress={() => setModal(!modal)}>
+        <TouchableOpacity
+          style={styles.newBtn}
+          onPress={() => setModal(!modal)}
+        >
           <Text style={styles.newBtnText}>Neue Notizen</Text>
-          <Feather name='plus' size={24} color='#FFF' />
+          <Feather name="plus" size={24} color="#FFF" />
         </TouchableOpacity>
       </View>
       {/* {modal && (
@@ -146,58 +192,56 @@ const NotesScreen = props => {
 
 const styles = StyleSheet.create({
   newBtnWrapper: {
-    width: Dimensions.get('window'). width,
-    alignItems: 'flex-end',
-    position: 'absolute',
-    bottom: 50,
-
+    width: Dimensions.get("window").width,
+    alignItems: "flex-end",
+    position: "absolute",
+    bottom: 50
   },
   newBtn: {
-    width: Dimensions.get('window').width * 0.7,
+    width: Dimensions.get("window").width * 0.7,
     height: 45,
-    backgroundColor: '#006F3D',
-    justifyContent: 'space-between',
+    backgroundColor: "#006F3D",
+    justifyContent: "space-between",
     borderRadius: 2,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingRight: 10
   },
   newBtnText: {
-    color: '#FFF',
+    color: "#FFF",
     marginLeft: 10,
-    fontWeight: 'bold',
-
+    fontWeight: "bold"
   },
   modalStyle: {
-    position: 'absolute',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    position: "absolute",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
     top: 0,
     left: 0,
-    backgroundColor: '#10101015'
+    backgroundColor: "#10101015"
   },
   newBtnModalWrapper: {
-    width: Dimensions.get('window'). width,
-    alignItems: 'flex-end',
+    width: Dimensions.get("window").width,
+    alignItems: "flex-end"
   },
   newBtnModal: {
-    width: Dimensions.get('window').width * 0.7,
+    width: Dimensions.get("window").width * 0.7,
     height: 45,
-    backgroundColor: '#FFF',
-    justifyContent: 'center',
-    borderLeftColor: '#42CC9D',
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    borderLeftColor: "#42CC9D",
     borderLeftWidth: 3,
     paddingRight: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
   },
   newBtnModalText: {
-    color: '#8A94A6',
+    color: "#8A94A6",
     fontSize: 14,
     lineHeight: 24,
     marginLeft: 10
   }
-})
+});
 
 export default NotesScreen;

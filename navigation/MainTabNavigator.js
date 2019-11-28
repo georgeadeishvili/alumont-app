@@ -15,6 +15,7 @@ import NotesScreen from "../screens/NotesScreen";
 import TaskScreen from "../screens/TaskScreen";
 import editImage from "../screens/EditImage";
 import ShotImage from "../screens/EditImage/Camera";
+import ViewPhoto from "../screens/ViewPhoto";
 
 import Sketch from "../screens/Sketch";
 import Login from "../screens/Authentication/LoginScreen";
@@ -34,10 +35,13 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    ShotImage,
     Auth,
-    Home: HomeScreen,
+    ViewPhoto,
     Notes: NotesScreen,
+    Sketch,
+    Home: HomeScreen,
+    TaskScreen,
+    ShotImage,
     editImage,
     Save,
     Check,
@@ -46,9 +50,7 @@ const HomeStack = createStackNavigator(
     Reset,
     VerifyEmail,
     Login,
-    TaskScreen,
     Registration,
-    Sketch,
     GyroScope
   },
   config

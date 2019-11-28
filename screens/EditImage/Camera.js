@@ -5,6 +5,9 @@ import { Camera } from "expo-camera";
 import { Feather, Ionicons } from "@expo/vector-icons";
 
 export default class CameraExample extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
     imageUri: "",
     hasCameraPermission: null,
@@ -18,7 +21,8 @@ export default class CameraExample extends React.Component {
   async takePicture() {
     const { uri } = await this.camera.takePictureAsync();
     this.setState({ imageUri: uri });
-    this.props.navigation.push("editImage", { uri });
+    const { userId } = this.props.navigation.state.params;
+    this.props.navigation.push("editImage", { uri, userId });
   }
   render() {
     const { hasCameraPermission } = this.state;
