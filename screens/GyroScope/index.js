@@ -53,7 +53,7 @@ export default class DeviceMotionSensor extends React.Component {
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Ionicons name='ios-arrow-round-back' size={50} color='#1B3554' />
           </TouchableOpacity>
-          <Text style={styles.newHeaderText}>Gyroscope</Text>
+          <Text style={styles.newHeaderText}>Winklemesser</Text>
         </View>
         <View style={styles.sensor}>
           <View style={styles.gyroscopeWrapper}>
