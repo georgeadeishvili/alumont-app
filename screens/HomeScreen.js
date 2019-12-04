@@ -83,6 +83,34 @@ export default function HomeScreen(props) {
             des="Klicke hier drauf um den Winklemesser
 zu benutzen"
           />
+
+          <View style={{ height: 30 }} />
+
+          <TouchableOpacity
+            onPress={() => {
+              firebase.auth().signOut();
+              props.navigation.navigate("Login");
+            }}
+            style={{
+              height: 70,
+              backgroundColor: "#FFFFFF",
+              borderRadius: 16,
+              top: 130,
+              padding: 20
+            }}
+            onPress={() => props.onPress()}
+          >
+            <Text
+              style={{
+                fontSize: 14,
+                marginLeft: 8,
+                marginTop: 8,
+                fontWeight: "bold"
+              }}
+            >
+              Ausloggen
+            </Text>
+          </TouchableOpacity>
         </View>
         <View style={{ height: 40 }}></View>
         <View style={{ padding: 30 }}>
@@ -127,28 +155,6 @@ zu benutzen"
             );
           })}
         </View>
-
-        <TouchableOpacity
-          onPress={() => {
-            firebase.auth().signOut();
-            props.navigation.navigate("Login");
-          }}
-          style={{
-            width: Dimensions.get("window").width,
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <Text
-            style={{
-              color: "#B0B7C3",
-              textDecorationLine: "underline",
-              marginBottom: 15
-            }}
-          >
-            Logout
-          </Text>
-        </TouchableOpacity>
       </ScrollView>
     </View>
   );

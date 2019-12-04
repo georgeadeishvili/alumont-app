@@ -50,7 +50,7 @@ class Login extends Component {
             onPress={() => this.bottomSheetRef.current.snapTo(0)}
             style={{
               height: 50,
-              backgroundColor: "#549AF4",
+              backgroundColor: "#0F6734",
               width: 200,
               borderRadius: "5",
               justifyContent: "center",
@@ -72,7 +72,7 @@ class Login extends Component {
         <View style={{ flex: 1, paddingHorizontal: 30 }}>
           <TextField label="email" keyboardType="email-address" />
 
-          <TextField label="password" secureTextEntry />
+          <TextField label="passwort" secureTextEntry />
           <View
             style={{
               height: 60,

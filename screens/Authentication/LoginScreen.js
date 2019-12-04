@@ -64,7 +64,7 @@ const LoginScreen = props => {
         <TextField
           onChangeText={pass => setPassword(pass)}
           value={password}
-          label="Password"
+          label="Passwort"
           secureTextEntry
         />
         <TouchableOpacity
@@ -98,7 +98,11 @@ const LoginScreen = props => {
             <WebView
               originWhitelist={["*"]}
               source={{ uri: "https://www.alumont.com/" }}
-              style={{ marginTop: 0, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+              style={{
+                marginTop: 0,
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20
+              }}
             />
           </View>
         )}
@@ -129,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: width * 0.6,
     height: 40,
-    backgroundColor: "#549AF4",
+    backgroundColor: "#0F6734",
     borderRadius: 4
   },
   visitWebText: {
@@ -162,7 +166,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5f5f5",
     // paddingTop: 20,
     borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopRightRadius: 20
     // shadowColor: "#000000",
     // shadowOffset: { width: 0, height: 0 },
     // shadowRadius: 5,
