@@ -27,7 +27,7 @@ export default class Loading extends React.Component {
   }
 
   onAuthStateChanged = user => {
-    this.setState({ isAuthenticationReady: true, userId: user.uid });
+    this.setState({ isAuthenticationReady: true });
     this.setState({ isAuthenticated: !!user });
     if (user) {
       this.props.navigation.navigate("Home", { userId: user.uid });

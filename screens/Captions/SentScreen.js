@@ -4,34 +4,41 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import EmailSent from './email-opened'
+import EmailSent from "./email-opened";
 
 const { width, height } = Dimensions.get("window");
 
-const SentScreen = (props) => (
-    <View style={styles.mainWrapper}>
-        <TouchableOpacity
-            style={styles.goBack}
-            onPress={() => props.navigation.goBack()}
-        >
-            <Feather name="x" size={32} color="#1D2029" />
-        </TouchableOpacity>
-        <EmailSent />
-        <View style={styles.container}>
-            <Text style={{fontSize:20, fontWeight:'bold', lineHeight:50 }}>E-Mail wurde gesendet</Text>
-            <Text style={{color: '#ABB4BD', textAlign: 'center'}}>Ihre Mediendatei wurde auf der Website von folgende E-Mail: app@alumont.com</Text>
-        </View>
-        <TouchableOpacity
-            style={styles.button}
-            onPress={() => props.navigation.navigate('Home')}
-        >
-            <Text style={{color: '#FFF'}}>Haupt</Text>
-        </TouchableOpacity>
+const SentScreen = props => (
+  <View style={styles.mainWrapper}>
+    <TouchableOpacity
+      style={styles.goBack}
+      onPress={() => props.navigation.goBack()}
+    >
+      <Feather name="x" size={32} color="#1D2029" />
+    </TouchableOpacity>
+
+    <EmailSent />
+    <View style={styles.container}>
+      <Text style={{ fontSize: 20, fontWeight: "bold", lineHeight: 50 }}>
+        E-Mail wurde gesendet
+      </Text>
+      <Text style={{ color: "#ABB4BD", textAlign: "center" }}>
+        Ihre Mediendatei wurde auf der Website von folgende E-Mail:
+        app@alumont.com
+      </Text>
     </View>
-)
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() => props.navigation.navigate("Home")}
+    >
+      <Text style={{ color: "#FFF" }}>Haupt</Text>
+    </TouchableOpacity>
+  </View>
+);
 
 const styles = StyleSheet.create({
   mainWrapper: {
@@ -51,7 +58,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: "84%",
-    alignItems: 'center'
+    alignItems: "center"
   },
   button: {
     width: width * 0.84,
@@ -60,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#006F3D",
     height: 40,
     borderRadius: 4
-  },
+  }
 });
 
 export default SentScreen;

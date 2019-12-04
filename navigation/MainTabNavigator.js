@@ -36,6 +36,8 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Auth,
+    Save,
+    Sent,
     ViewPhoto,
     Notes: NotesScreen,
     Sketch,
@@ -43,9 +45,7 @@ const HomeStack = createStackNavigator(
     TaskScreen,
     ShotImage,
     editImage,
-    Save,
     Check,
-    Sent,
     Pending,
     Reset,
     VerifyEmail,
