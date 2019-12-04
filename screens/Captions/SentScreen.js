@@ -26,7 +26,7 @@ const SentScreen = (props) => (
         </View>
         <TouchableOpacity
             style={styles.button}
-            onPress={() => props.navigation.navigate('Home')}
+            onPress={() => props.navigation.navigate('Notes')}
         >
             <Text style={{color: '#FFF'}}>Haupt</Text>
         </TouchableOpacity>

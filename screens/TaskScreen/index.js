@@ -25,7 +25,7 @@ class TaskScreens extends Component {
             borderWidth: 1,
             borderColor: "#E1E4E8",
             height: 40,
-            minWidth: 60,
+            minWidth: '40%',
             borderRadius: 5,
             backgroundColor: "#FFF",
             justifyContent: "center",
@@ -108,28 +108,28 @@ class TaskScreens extends Component {
                 fontSize: 15
               }}
             >
-              Reclamation
+              Reklamation
             </Text>
           </View>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-            {this.Item("Piece", piece)}
-            {this.Item("Prod. time", ProdTime)}
+            {this.Item("Stück", piece)}
+            {this.Item("Prod. Zeit", ProdTime)}
             {this.Item("Prod. #", Prod)}
-            {this.Item("Receipt Dat", receiptDate)}
-            {this.Item("Target Coating", TargetCoating)}
-            {this.Item("Delivery Date", DeliveryDate)}
-            {this.Item("Dispatched On", DispatchedOn)}
-            {this.Item("Term", Term)}
+            {this.Item("Eingangsdatum", receiptDate)}
+            {this.Item("Zielbeschichtung", TargetCoating)}
+            {this.Item("Liefertermin", DeliveryDate)}
+            {this.Item("Versandt Am", DispatchedOn)}
+            {this.Item("Begriff", Term)}
             {this.Item("Status", Status)}
-            {this.Item("From the Production", FromProdiction)}
-            {this.Item("Ready for Shipment", readyForShipment)}
-            {this.Item("Assembly in h (Target)", AssamblyInH)}
-            {this.Item("Assembly Number", AssamblyInNum)}
-            {this.Item("Assembly Start", AssamblyStart)}
-            {this.Item("Due Date", DueDate)}
-            {this.Item("Assembly End", AssamblyEnd)}
-            {this.Item("Assembly in h (Result)", AssamblyInHResult)}
-            {this.Item("Installer Deployment", installerDeplyment)}
+            {this.Item("Aus der Produktion", FromProdiction)}
+            {this.Item("Versandfertig", readyForShipment)}
+            {this.Item("Montage in h (Ziel)", AssamblyInH)}
+            {this.Item("Baugruppennummer", AssamblyInNum)}
+            {this.Item("Montagebeginn", AssamblyStart)}
+            {this.Item("Fälligkeitsdatum", DueDate)}
+            {this.Item("Montageende", AssamblyEnd)}
+            {this.Item("Montage in h (Ergebnis)", AssamblyInHResult)}
+            {this.Item("Bereitstellung des Installers", installerDeplyment)}
           </View>
         </ScrollView>
       </View>

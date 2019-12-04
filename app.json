@@ -17,7 +17,7 @@
       }
     },
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -35,7 +35,7 @@
     },
     "android": {
       "package": "ai.systemcorp.alumont",
-      "versionCode": 1
+      "versionCode": 2
     }
   }
 }
