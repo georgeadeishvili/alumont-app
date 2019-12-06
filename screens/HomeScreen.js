@@ -13,7 +13,7 @@ import {
 } from "react-native";
 
 import WaveView from "./UnionIcon.js";
-import { Octicons } from '@expo/vector-icons'
+import { Octicons } from "@expo/vector-icons";
 // import Svg from 'react-native-svg';
 import SvgUri from "expo-svg-uri";
 import { LinearGradient } from "expo-linear-gradient";
@@ -85,11 +85,9 @@ zu benutzen"
           />
 
           <View style={{ height: 30 }} />
-
-          
         </View>
         <View style={{ height: 40 }} />
-        
+
         <View style={{ padding: 30 }}>
           <TouchableOpacity
             onPress={() => {
@@ -102,11 +100,10 @@ zu benutzen"
               borderRadius: 8,
               paddingLeft: 20,
               paddingRight: 30,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between'
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between"
             }}
-            onPress={() => props.onPress()}
           >
             <Text
               style={{
@@ -118,7 +115,7 @@ zu benutzen"
             >
               Ausloggen
             </Text>
-            <Octicons name='sign-out' size={20} color='grey' />
+            <Octicons name="sign-out" size={20} color="grey" />
           </TouchableOpacity>
           {/* <Text style={{ color: "#4E5D78", fontSize: 18, fontWeight: "bold" }}>
             Auftrage
