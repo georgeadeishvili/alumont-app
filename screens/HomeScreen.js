@@ -13,7 +13,7 @@ import {
 } from "react-native";
 
 import WaveView from "./UnionIcon.js";
-
+import { Octicons } from '@expo/vector-icons'
 // import Svg from 'react-native-svg';
 import SvgUri from "expo-svg-uri";
 import { LinearGradient } from "expo-linear-gradient";
@@ -86,37 +86,43 @@ zu benutzen"
 
           <View style={{ height: 30 }} />
 
+          
+        </View>
+        <View style={{ height: 40 }} />
+        
+        <View style={{ padding: 30 }}>
           <TouchableOpacity
             onPress={() => {
               firebase.auth().signOut();
               props.navigation.navigate("Login");
             }}
             style={{
-              height: 70,
+              height: 40,
               backgroundColor: "#FFFFFF",
-              borderRadius: 16,
-              top: 130,
-              padding: 20
+              borderRadius: 8,
+              paddingLeft: 20,
+              paddingRight: 30,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between'
             }}
             onPress={() => props.onPress()}
           >
             <Text
               style={{
                 fontSize: 14,
+                lineHeight: 20,
                 marginLeft: 8,
-                marginTop: 8,
                 fontWeight: "bold"
               }}
             >
               Ausloggen
             </Text>
+            <Octicons name='sign-out' size={20} color='grey' />
           </TouchableOpacity>
-        </View>
-        <View style={{ height: 40 }}></View>
-        <View style={{ padding: 30 }}>
-          <Text style={{ color: "#4E5D78", fontSize: 18, fontWeight: "bold" }}>
+          {/* <Text style={{ color: "#4E5D78", fontSize: 18, fontWeight: "bold" }}>
             Auftrage
-          </Text>
+          </Text> */}
 
           {tasks.map((task, index) => {
             return (

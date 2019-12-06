@@ -62,8 +62,8 @@ export default class DeviceMotionSensor extends React.Component {
               <View style={styles.circleWrapper}>
                 <Circle x={round(gamma)} y={round(beta)} />
                 <View style={styles.coordinates}>
-                  <Text style={styles.coordinateText}>x = {round(gamma)}</Text>
-                  <Text style={styles.coordinateText}>y = {round(beta)}</Text>
+                  <Text style={styles.coordinateText}>x = {round(gamma)}&ordm;</Text>
+                  <Text style={styles.coordinateText}>y = {round(beta)}&ordm;</Text>
                 </View>
               </View>
               <YLevel y={round(beta)} />
