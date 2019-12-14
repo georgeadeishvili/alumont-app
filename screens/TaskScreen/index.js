@@ -25,7 +25,7 @@ class TaskScreens extends Component {
             borderWidth: 1,
             borderColor: "#E1E4E8",
             height: 40,
-            minWidth: '40%',
+            minWidth: "40%",
             borderRadius: 5,
             backgroundColor: "#FFF",
             justifyContent: "center",
@@ -112,24 +112,30 @@ class TaskScreens extends Component {
             </Text>
           </View>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-            {this.Item("Stück", piece)}
-            {this.Item("Prod. Zeit", ProdTime)}
-            {this.Item("Prod. #", Prod)}
-            {this.Item("Eingangsdatum", receiptDate)}
-            {this.Item("Zielbeschichtung", TargetCoating)}
-            {this.Item("Liefertermin", DeliveryDate)}
-            {this.Item("Versandt Am", DispatchedOn)}
-            {this.Item("Begriff", Term)}
-            {this.Item("Status", Status)}
-            {this.Item("Aus der Produktion", FromProdiction)}
+            {this.Item("Tail", piece)}
+            {/* {this.Item("Prod. Zeit", ProdTime)}
+            {this.Item("Prod. #", Prod)} */}
+            {this.Item("Eingang AV", receiptDate)}
+            {this.Item("Aus Produktion", DueDate)}
+            {this.Item("Soll Beschichtung", receiptDate)}
+
             {this.Item("Versandfertig", readyForShipment)}
-            {this.Item("Montage in h (Ziel)", AssamblyInH)}
+
+            {this.Item("Versandt Am", DispatchedOn)}
+
+            {this.Item("Liefertermin", DeliveryDate)}
+
+            {this.Item("Zeichnungen", TargetCoating)}
+            {/* {this.Item("Begriff", Term)} */}
+            {/* {this.Item("Status", Status)} */}
+            {/* {this.Item("Aus der Produktion", FromProdiction)} */}
+            {/* {this.Item("Montage in h (Ziel)", AssamblyInH)}
             {this.Item("Baugruppennummer", AssamblyInNum)}
             {this.Item("Montagebeginn", AssamblyStart)}
             {this.Item("Fälligkeitsdatum", DueDate)}
             {this.Item("Montageende", AssamblyEnd)}
-            {this.Item("Montage in h (Ergebnis)", AssamblyInHResult)}
-            {this.Item("Bereitstellung des Installers", installerDeplyment)}
+            {this.Item("Montage in h (Ergebnis)", AssamblyInHResult)} */}
+            {this.Item("Prognose", installerDeplyment)}
           </View>
         </ScrollView>
       </View>
