@@ -6866,6 +6866,11 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
+react-native-app-link@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-app-link/-/react-native-app-link-1.0.0.tgz#9de44a4676fd7d2879f26fc0691c48c0a85b4e2a"
+  integrity sha512-x2eNaQqC5yaI+/A8lITt/0Nr/Kf0DV+xmGwIHtqRbKtDnSJfAEJQkV1X9XVygEq6FLRKQ9+IcSKNrw8TwiHAzQ==
+
 react-native-branch@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"

@@ -233,7 +233,7 @@ export default class App extends React.Component {
                 </Gestures>
               );
             })}
-            {!this.state.takingScreenShot && (
+            {/* {!this.state.takingScreenShot && (
               <View
                 style={{
                   flex: 1,
@@ -258,7 +258,7 @@ export default class App extends React.Component {
                   <FontAwesome name="repeat" color="#FFF" size={32} />
                 </TouchableOpacity>
               </View>
-            )}
+            )} */}
             {this.state.modal && (
               <TouchableOpacity
                 style={styles.modalStyle}

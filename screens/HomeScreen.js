@@ -79,8 +79,8 @@ export default function HomeScreen(props) {
               props.navigation.navigate("GyroScope");
             }}
             icon="wink"
-            title="Winklemesser"
-            des="Klicke hier drauf um den Winklemesser
+            title="Winkelmesser"
+            des="Klicke hier drauf um den Winkelmesser
 zu benutzen"
           />
 
