@@ -23,13 +23,13 @@ const SentScreen = (props) => (
         <EmailSent />
         <View style={styles.container}>
             <Text style={{fontSize:20, fontWeight:'bold', lineHeight:50 }}>E-Mail wurde gesendet</Text>
-            <Text style={{color: '#ABB4BD', textAlign: 'center'}}>Ihre Mediendatei wurde auf der Website von folgende E-Mail: app@alumont.com</Text>
+            <Text style={{color: '#ABB4BD', textAlign: 'center'}}>Die Datei wurde an folgende E-Mail gesendet app@alumont.com</Text>
         </View>
         <TouchableOpacity
             style={styles.button}
             onPress={() => props.navigation.navigate('Notes')}
         >
-            <Text style={{color: '#FFF'}}>Haupt</Text>
+            <Text style={{color: '#FFF'}}>Zurück zur Startseit</Text>
         </TouchableOpacity>
     <TouchableOpacity
       style={styles.button}

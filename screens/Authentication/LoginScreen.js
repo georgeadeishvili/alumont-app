@@ -4,7 +4,9 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  Platform,
+  Image
 } from "react-native";
 import { Input } from "../../components/Input";
 import SvgUri from "expo-svg-uri";
@@ -41,11 +43,21 @@ const LoginScreen = props => {
   const bottomSheetRef = useRef();
   return (
     <View style={styles.mainWrapper}>
-      <SvgUri
-        style={{ marginTop: 100 }}
-        width={width * 0.613}
-        source={require("../../assets/images/Logo.svg")}
-      />
+      {
+        (Platform.OS == 'android') ? (
+          <Image
+            source={require('./Logo.png')}
+            resizeMode={'contain'}
+            style={{width: width * 0.613, marginTop: 100}}
+          />
+        ) : (
+          <SvgUri
+            style={{ marginTop: 100 }}
+            width={width * 0.613}
+            source={require("../../assets/images/Logo.svg")}
+          />
+        )
+      }
       <TouchableOpacity
         style={styles.visitWebStyle}
         onPress={() => bottomSheetRef.current.snapTo(0)}

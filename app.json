@@ -17,7 +17,7 @@
       }
     },
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.7",
+    "version": "1.0.9",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -31,11 +31,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ai.systemcorp.alumont"
+      "bundleIdentifier": "ai.systemcorp.alumont",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Diese App benutzt deine Kamera um aufgenommene Bilder speichern zu können"
+      }
     },
     "android": {
       "package": "ai.systemcorp.alumont",
-      "versionCode": 5
+      "versionCode": 6
     }
   }
 }

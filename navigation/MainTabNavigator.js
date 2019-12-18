@@ -30,7 +30,7 @@ import Save from "../screens/Captions/SaveScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
-  default: { headerMode: "none" }
+  default: { headerMode: "none", defaultNavigationOptions: { gesturesEnabled: false} }
 });
 
 const HomeStack = createStackNavigator(
