@@ -8,7 +8,7 @@ import {
   Platform
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import EmailSent from "./email-opened";
+import EmailSent from "./email-sent";
 
 const { width, height } = Dimensions.get("window");
 
@@ -31,12 +31,6 @@ const SentScreen = (props) => (
         >
             <Text style={{color: '#FFF'}}>Zurück zur Startseit</Text>
         </TouchableOpacity>
-    <TouchableOpacity
-      style={styles.button}
-      onPress={() => props.navigation.navigate("Home")}
-    >
-      <Text style={{ color: "#FFF" }}>Haupt</Text>
-    </TouchableOpacity>
   </View>
 );
 
