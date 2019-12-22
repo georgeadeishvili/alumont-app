@@ -8,7 +8,7 @@ import {
   Platform
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import EmailSent from "./email-sent";
+import EmailSent from "./email-opened";
 
 const { width, height } = Dimensions.get("window");
 
@@ -29,7 +29,7 @@ const SentScreen = (props) => (
             style={styles.button}
             onPress={() => props.navigation.navigate('Notes')}
         >
-            <Text style={{color: '#FFF'}}>Zurück zur Startseit</Text>
+            <Text style={{color: '#FFF'}}>Zurück zur Startseite</Text>
         </TouchableOpacity>
   </View>
 );

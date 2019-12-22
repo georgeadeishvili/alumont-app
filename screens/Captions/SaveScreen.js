@@ -28,7 +28,7 @@ const SaveScreen = (props) => (
             style={styles.button}
             onPress={() => props.navigation.navigate('Notes')}
         >
-            <Text style={{color: '#FFF'}}>Zurück zum Startbildschirm</Text>
+            <Text style={{color: '#FFF'}}>Zurück zum Startbildschirme</Text>
         </TouchableOpacity>
     </View>
 )

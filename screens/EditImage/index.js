@@ -158,7 +158,7 @@ export default class App extends React.Component {
                 <TouchableHighlight
                   onPress={() => {
                     this.state.texts.push({
-                      value: "Type Something...",
+                      value: "Text einfügen...",
                       selected: false
                     });
                     this.setState({ texts: this.state.texts });

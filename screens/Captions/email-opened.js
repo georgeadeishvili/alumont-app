@@ -15,7 +15,7 @@ const EmailOpened = props => {
   if (Platform.OS == "android") {
     return (
       <Image
-        source={require("./email-opened.png")}
+        source={require("./sent.png")}
         style={{ width: "85%" }}
         resizeMode={"contain"}
       />

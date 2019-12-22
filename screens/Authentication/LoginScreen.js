@@ -70,7 +70,7 @@ const LoginScreen = props => {
         <TextField
           onChangeText={text => setEmail(text)}
           value={email}
-          label="E-Mail oder Kundennu"
+          label="E-Mail oder KundenNr"
           keyboardType="email-address"
         />
         <TextField
