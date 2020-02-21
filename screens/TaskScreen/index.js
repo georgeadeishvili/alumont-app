@@ -65,81 +65,87 @@ class TaskScreens extends Component {
       installerDeplyment
     } = this.props.navigation.state.params.task;
     return (
-      <View style={styles.container}>
-        <ScrollView
-          style={{ flex: 1 }}
-          contentContainerStyle={{ paddingBottom: 30 }}
-        >
-          <View
-            style={{
-              height: 70,
-              flexDirection: "row",
-              marginTop: 50,
-              paddingHorizontal: 20
-            }}
-          >
-            <View style={{ flex: 1, justifyContent: "center" }}>
-              <Text style={{ color: "#0A1F44", fontSize: 20 }}>#{id}</Text>
-              <Text style={{ color: "#B0B7C3" }}>{address}</Text>
-            </View>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.pop()}
-              style={{
-                flex: 1,
-                alignItems: "flex-end",
-                paddingRight: 15,
-                justifyContent: "center"
-              }}
-            >
-              <AntDesign name="arrowleft" size={40} color="#000" />
-            </TouchableOpacity>
-          </View>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <CheckBox
-              onPress={() => this.setState({ checked: !this.state.checked })}
-              value={true}
-              disabled={false}
-              checked={this.state.checked}
-            />
-            <Text
-              style={{
-                color: "#0A1F44",
-                fontWeight: "600",
-                fontSize: 15
-              }}
-            >
-              Reklamation
-            </Text>
-          </View>
-          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-            {this.Item("Tail", piece)}
-            {/* {this.Item("Prod. Zeit", ProdTime)}
+		<View style={styles.container}>
+			<ScrollView
+				style={{ flex: 1 }}
+				contentContainerStyle={{ paddingBottom: 30 }}
+			>
+				<View
+					style={{
+						height: 70,
+						flexDirection: 'row',
+						marginTop: 50,
+						paddingHorizontal: 20
+					}}
+				>
+					<View style={{ flex: 1, justifyContent: 'center' }}>
+						<Text style={{ color: '#0A1F44', fontSize: 20 }}>
+							#{id}
+						</Text>
+						<Text style={{ color: '#B0B7C3' }}>{address}</Text>
+					</View>
+					<TouchableOpacity
+						onPress={() => this.props.navigation.pop()}
+						style={{
+							flex: 1,
+							alignItems: 'flex-end',
+							paddingRight: 15,
+							justifyContent: 'center'
+						}}
+					>
+						<AntDesign name='arrowleft' size={40} color='#000' />
+					</TouchableOpacity>
+				</View>
+				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+					<CheckBox
+						onPress={() =>
+							this.setState({ checked: !this.state.checked })
+						}
+						value={true}
+						disabled={false}
+						checked={this.state.checked}
+					/>
+					<Text
+						style={{
+							color: '#0A1F44',
+							fontWeight: '600',
+							fontSize: 15
+						}}
+					>
+						Erledigt
+					</Text>
+				</View>
+				<View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+					{this.Item('Tail', piece)}
+					{/* {this.Item("Prod. Zeit", ProdTime)}
             {this.Item("Prod. #", Prod)} */}
-            {this.Item("Eingang AV", receiptDate)}
-            {this.Item("Aus Produktion", DueDate)}
-            {this.Item("Soll Beschichtung", receiptDate)}
+					{this.Item('Eingang AV', receiptDate)}
+					{this.Item('Aus Produktion', DueDate)}
+					{this.Item('Soll Beschichtung', receiptDate)}
 
-            {this.Item("Versandfertig", readyForShipment)}
+					{this.Item('Versandfertig', AssamblyStart)}
 
-            {this.Item("Versandt Am", DispatchedOn)}
+					{this.Item('Versandt Am', AssamblyEnd)}
 
-            {this.Item("Liefertermin", DeliveryDate)}
+					{this.Item('Liefertermin Kd', DeliveryDate)}
 
-            {this.Item("Zeichnungen", TargetCoating)}
-            {/* {this.Item("Begriff", Term)} */}
-            {/* {this.Item("Status", Status)} */}
-            {/* {this.Item("Aus der Produktion", FromProdiction)} */}
-            {/* {this.Item("Montage in h (Ziel)", AssamblyInH)}
+					{this.Item('Zeichnungen', Status)}
+
+					{this.Item('Bezeichnung', FromProdiction)}
+					{/* {this.Item("Begriff", Term)} */}
+					{/* {this.Item("Status", Status)} */}
+					{/* {this.Item("Aus der Produktion", FromProdiction)} */}
+					{/* {this.Item("Montage in h (Ziel)", AssamblyInH)}
             {this.Item("Baugruppennummer", AssamblyInNum)}
             {this.Item("Montagebeginn", AssamblyStart)}
             {this.Item("Fälligkeitsdatum", DueDate)}
             {this.Item("Montageende", AssamblyEnd)}
             {this.Item("Montage in h (Ergebnis)", AssamblyInHResult)} */}
-            {this.Item("Prognose", installerDeplyment)}
-          </View>
-        </ScrollView>
-      </View>
-    );
+					{this.Item('Prognose', installerDeplyment)}
+				</View>
+			</ScrollView>
+		</View>
+	)
   }
 }
 

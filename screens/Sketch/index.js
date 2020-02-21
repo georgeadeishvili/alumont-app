@@ -94,10 +94,10 @@ class Sketch extends Component {
           .database()
           .ref("users/" + userId)
           .push({
-            photo: "http://167.71.35.237/uploads/" + photoId
+            photo: "http://139.59.154.25/uploads/" + photoId
           });
 
-        await fetch("http://167.71.35.237/upload", {
+        await fetch("http://139.59.154.25/upload", {
           method: "POST",
           body: formData,
           header: {
@@ -134,10 +134,10 @@ class Sketch extends Component {
           .database()
           .ref("users/" + userId)
           .push({
-            photo: "http://167.71.35.237/uploads/" + photoId
+            photo: "http://139.59.154.25/uploads/" + photoId
           });
 
-        await fetch("http://167.71.35.237/upload", {
+        await fetch("http://139.59.154.25/upload", {
           method: "POST",
           body: formData,
           header: {

@@ -22,7 +22,7 @@ import * as firebase from "firebase";
 export default function HomeScreen(props) {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    fetch("http://167.71.35.237/taskdata")
+    fetch("http://139.59.154.25/taskdata")
       .then(res => res.json())
       .then(res => {
         setTasks(res);
