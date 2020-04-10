@@ -15,6 +15,8 @@ const { width, height } = Dimensions.get("window");
 
 const RegistrationScreen = props => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState('')
+  const [customerId, setCustomerId] = useState('')
   const [password, setPassword] = useState("");
   const [password1, setPassword1] = useState("");
 
@@ -25,7 +27,18 @@ const RegistrationScreen = props => {
         .createUserWithEmailAndPassword(email, password)
         .then(
           () => {
-            props.navigation.navigate("home");
+            const user = firebase.auth().currentUser
+            firebase
+            .database()
+            .ref("users/" + user.uid)
+            .set({
+              customerId,
+              name,
+              email,
+              verification: false
+            })
+            firebase.auth().signOut()
+            props.navigation.navigate("Login");
           },
           error => {
             alert(error.message);
@@ -48,8 +61,8 @@ const RegistrationScreen = props => {
         <Text style={styles.headerText}>Registrieren</Text>
       </View>
       <View style={styles.inputWrapper}>
-        <TextField label="Name" />
-        <TextField label="KundenNr" />
+        <TextField label="Name" onChangeText={nm => setName(nm)} />
+        <TextField label="KundenNr" onChangeText={ci => setCustomerId(ci)} />
         <TextField
           onChangeText={ml => setEmail(ml)}
           label="E-mail"

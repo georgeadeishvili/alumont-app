@@ -33,7 +33,15 @@ const LoginScreen = props => {
       .signInWithEmailAndPassword(email, password)
       .then(
         () => {
-          props.navigation.navigate("home");
+          const user = firebase.auth().currentUser
+          firebase.database().ref("users/" + user.uid).once('value').then((snapshot) => {
+            const isVerified = snapshot.val().verification
+            if (isVerified) {
+              props.navigation.navigate("home")
+            } else {
+              firebase.auth().signOut()
+            }
+          })
         },
         error => {
           alert(error.message);
