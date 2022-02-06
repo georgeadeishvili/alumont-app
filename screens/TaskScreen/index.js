@@ -12,57 +12,55 @@ class TaskScreens extends Component {
   };
 
   Item = (title, value) => {
-    return (
-      <View
-        style={{
-          marginTop: 20,
-          marginLeft: 40
-        }}
-      >
-        <Text style={{}}>{title}</Text>
-        <View
-          style={{
-            borderWidth: 1,
-            borderColor: "#E1E4E8",
-            height: 40,
-            minWidth: "40%",
-            borderRadius: 5,
-            backgroundColor: "#FFF",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            paddingLeft: 10,
-            marginTop: 4,
-            paddingRight: 30
-          }}
-        >
-          <Text>{value}</Text>
-        </View>
-      </View>
-    );
+	  if (value) {
+		return (
+			<View
+			  style={{
+				marginTop: 20,
+				marginLeft: 40
+			  }}
+			>
+			  <Text style={{}}>{title}</Text>
+			  <View
+				style={{
+				  borderWidth: 1,
+				  borderColor: "#E1E4E8",
+				  height: 40,
+				  minWidth: "40%",
+				  borderRadius: 5,
+				  backgroundColor: "#FFF",
+				  justifyContent: "center",
+				  alignItems: "flex-start",
+				  paddingLeft: 10,
+				  marginTop: 4,
+				  paddingRight: 30
+				}}
+			  >
+				<Text>{value}</Text>
+			  </View>
+			</View>
+		  );
+	  } else {
+		  return
+	  }
+    
   };
 
   render() {
     const {
-      id,
-      address,
-      piece,
-      ProdTime,
-      Prod,
-      receiptDate,
-      TargetCoating,
-      DeliveryDate,
-      DispatchedOn,
-      Term,
-      Status,
-      FromProdiction,
-      readyForShipment,
-      AssamblyInH,
-      AssamblyInNum,
-      AssamblyStart,
-      DueDate,
-      AssamblyEnd,
-      AssamblyInHResult,
-      installerDeplyment
+	  id,
+	  taskId,
+	  taskName,
+	  taskDes,
+	  date1,
+	  date2,
+	  date3,
+	  date4,
+	  date5,
+	  date6,
+	  date7,
+	  customerLocation,
+	  customerAddress,
     } = this.props.navigation.state.params.task;
     return (
 		<View style={styles.container}>
@@ -82,7 +80,7 @@ class TaskScreens extends Component {
 						<Text style={{ color: '#0A1F44', fontSize: 20 }}>
 							#{id}
 						</Text>
-						<Text style={{ color: '#B0B7C3' }}>{address}</Text>
+						{/* <Text style={{ color: '#B0B7C3' }}>{address}</Text> */}
 					</View>
 					<TouchableOpacity
 						onPress={() => this.props.navigation.pop()}
@@ -116,32 +114,30 @@ class TaskScreens extends Component {
 					</Text>
 				</View>
 				<View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-					{this.Item('Tail', piece)}
+					{this.Item('AuftragsNr', taskId)}
+					{this.Item('Teil', taskName)}
+					{this.Item('Bauvorhaben', taskDes)}
 					{/* {this.Item("Prod. Zeit", ProdTime)}
             {this.Item("Prod. #", Prod)} */}
-					{this.Item('Eingang AV', receiptDate)}
-					{this.Item('Aus Produktion', DueDate)}
-					{this.Item('Soll Beschichtung', receiptDate)}
-
-					{this.Item('Versandfertig', AssamblyStart)}
-
-					{this.Item('Versandt Am', AssamblyEnd)}
-
-					{this.Item('Liefertermin Kd', DeliveryDate)}
-
-					{this.Item('Zeichnungen', Status)}
-
-					{this.Item('Bezeichnung', FromProdiction)}
+					{this.Item('ABDatum', date1)}
+					{this.Item('Eingang AV', date2)}
+					{this.Item('Soll Beschichtung', date3)}
+					{this.Item('Aus Produktion', date4)}
+					{this.Item('Versandfertig', date5)}
+					{this.Item('Versandt Am', date6)}
+					{this.Item('Liefertermin Kd', date7)}
+					{/* {this.Item('Zeichnungen', Status)} */}
+					{/* {this.Item('Bezeichnung', FromProdiction)} */}
 					{/* {this.Item("Begriff", Term)} */}
 					{/* {this.Item("Status", Status)} */}
 					{/* {this.Item("Aus der Produktion", FromProdiction)} */}
 					{/* {this.Item("Montage in h (Ziel)", AssamblyInH)}
-            {this.Item("Baugruppennummer", AssamblyInNum)}
-            {this.Item("Montagebeginn", AssamblyStart)}
-            {this.Item("Fälligkeitsdatum", DueDate)}
-            {this.Item("Montageende", AssamblyEnd)}
-            {this.Item("Montage in h (Ergebnis)", AssamblyInHResult)} */}
-					{this.Item('Prognose', installerDeplyment)}
+					{this.Item("Baugruppennummer", AssamblyInNum)}
+					{this.Item("Montagebeginn", AssamblyStart)}
+					{this.Item("Fälligkeitsdatum", DueDate)}
+					{this.Item("Montageende", AssamblyEnd)}
+					{this.Item("Montage in h (Ergebnis)", AssamblyInHResult)} */}
+					{/* {this.Item('Prognose', installerDeplyment)} */}
 				</View>
 			</ScrollView>
 		</View>

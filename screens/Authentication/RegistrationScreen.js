@@ -4,8 +4,13 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  ScrollView,
+  KeyboardAvoidingView,
+  Keyboard,
+  Platform
 } from "react-native";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import { TextField } from "react-native-material-textfield";
 import { Ionicons } from "@expo/vector-icons";
 import SvgUri from "expo-svg-uri";
@@ -28,17 +33,19 @@ const RegistrationScreen = props => {
         .then(
           () => {
             const user = firebase.auth().currentUser
-            firebase
-            .database()
-            .ref("users/" + user.uid)
-            .set({
-              customerId,
-              name,
-              email,
-              verification: false
+            user.updateProfile({ displayName: customerId }).then(() => {
+              firebase
+              .database()
+              .ref(customerId)
+              .set({
+                customerId,
+                name,
+                email,
+                verification: false
+              })
+              firebase.auth().signOut()
+              props.navigation.navigate("Login");
             })
-            firebase.auth().signOut()
-            props.navigation.navigate("Login");
           },
           error => {
             alert(error.message);
@@ -50,40 +57,30 @@ const RegistrationScreen = props => {
   }
 
   return (
-    <View style={styles.mainWrapper}>
-      <TouchableOpacity
-        style={styles.goBack}
-        onPress={() => props.navigation.goBack()}
-      >
-        <Ionicons name="ios-arrow-back" size={32} color="#1D2029" />
-      </TouchableOpacity>
-      <View style={styles.headerStyle}>
-        <Text style={styles.headerText}>Registrieren</Text>
-      </View>
-      <View style={styles.inputWrapper}>
-        <TextField label="Name" onChangeText={nm => setName(nm)} />
-        <TextField label="KundenNr" onChangeText={ci => setCustomerId(ci)} />
-        <TextField
-          onChangeText={ml => setEmail(ml)}
-          label="E-mail"
-          keyboardType="email-address"
-        />
-        <TextField
-          onChangeText={Pass => setPassword(Pass)}
-          label="Passwort"
-          secureTextEntry
-        />
-        <TextField
-          onChangeText={Pass => setPassword1(Pass)}
-          label="Passwort bestätigen"
-          secureTextEntry
-        />
-      </View>
-      <TouchableOpacity onPress={() => Reg()} style={styles.RegButton}>
-        <Text style={{ color: "#FFF" }}>Registrieren</Text>
-      </TouchableOpacity>
-    </View>
-  );
+
+			<KeyboardAwareScrollView style={{ flex: 1 }} contentContainerStyle={styles.mainWrapper}>
+				<TouchableOpacity style={styles.goBack} onPress={() => props.navigation.goBack()}>
+					<Ionicons name='ios-arrow-back' size={32} color='#1D2029' />
+				</TouchableOpacity>
+				<View style={styles.headerStyle}>
+					<Text style={styles.headerText}>Registrieren</Text>
+				</View>
+				<View style={styles.inputWrapper}>
+					<TextField label='Name' onChangeText={(nm) => setName(nm)} />
+					<TextField label='KundenNr' onChangeText={(ci) => setCustomerId(ci)} />
+					<TextField onChangeText={(ml) => setEmail(ml)} label='E-mail' keyboardType='email-address' />
+					<TextField onChangeText={(Pass) => setPassword(Pass)} label='Passwort' secureTextEntry />
+					<TextField
+						onChangeText={(Pass) => setPassword1(Pass)}
+						label='Passwort bestätigen'
+						secureTextEntry
+					/>
+				</View>
+				<TouchableOpacity onPress={() => Reg()} style={styles.RegButton}>
+					<Text style={{ color: '#FFF' }}>Registrieren</Text>
+				</TouchableOpacity>
+			</KeyboardAwareScrollView>
+  )
 };
 
 const styles = StyleSheet.create({

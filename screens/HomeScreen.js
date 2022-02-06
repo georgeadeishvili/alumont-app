@@ -1,5 +1,5 @@
 import * as WebBrowser from "expo-web-browser";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Image,
   Platform,
@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
   Dimensions,
+  RefreshControl,
   StatusBar
 } from "react-native";
 
@@ -21,13 +22,35 @@ import Card from "./Card";
 import * as firebase from "firebase";
 export default function HomeScreen(props) {
   const [tasks, setTasks] = useState([]);
+  const [refreshing, setRefreshing] = useState(false)
   useEffect(() => {
-    fetch("http://138.68.100.225/taskdata")
-      .then(res => res.json())
-      .then(res => {
-        setTasks(res);
-      });
+    fetchDataFromFirebase()
+    // fetch("http://138.68.100.225/taskdata")
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     setTasks(res);
+    //   });
   }, []);
+
+  function fetchDataFromFirebase() {
+    const user = firebase.auth().currentUser
+    firebase.database().ref(user.displayName).child('tasks').once('value').then(snapshot => {
+      const retrievedData = []
+      snapshot.forEach(data => {
+        retrievedData.push(data.val())
+      })
+      setTasks(retrievedData)
+      setRefreshing(false)
+    })
+  }
+
+  const onRefresh = useCallback(
+    () => {
+      setRefreshing(true)
+      fetchDataFromFirebase()
+    },
+    [refreshing],
+  )
 
   function generateColor() {
     let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
@@ -51,7 +74,14 @@ export default function HomeScreen(props) {
           borderRadius: Dimensions.get("window").height * 0.527
         }}
       />
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}
+        refreshControl={
+          <RefreshControl 
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
+      >
         <View style={{ height: 400 }}></View>
 
         <View
@@ -122,6 +152,7 @@ zu benutzen"
           </Text> */}
 
           {tasks.map((task, index) => {
+            console.log(task)
             return (
               <TouchableOpacity
                 onPress={() =>
@@ -138,12 +169,12 @@ zu benutzen"
               >
                 <View style={{ flex: 2, padding: 20 }}>
                   <Text style={{ color: "#0A1F44", fontSize: 16 }}>
-                    #{task.id}
+                    #{task.taskId}
                   </Text>
                   <Text
                     style={{ color: "#B0B7C3", fontSize: 14, marginTop: 8 }}
                   >
-                    St. Andrew’s #14, Frankfurt
+                    {task.taskDes}
                   </Text>
                 </View>
                 <View

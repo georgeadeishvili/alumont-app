@@ -1,13 +1,15 @@
 import React, { useRef, useState } from "react";
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-  StyleSheet,
-  Platform,
-  Image
-} from "react-native";
+	View,
+	Text,
+	TouchableOpacity,
+	Dimensions,
+	StyleSheet,
+	Platform,
+	Image,
+  KeyboardAvoidingView,
+  Keyboard
+} from 'react-native'
 import { Input } from "../../components/Input";
 import SvgUri from "expo-svg-uri";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -25,6 +27,7 @@ const { width, height } = Dimensions.get("window");
 const LoginScreen = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [logoShow, setLogoShow] = useState(true)
 
   function Login() {
     // alert(email);
@@ -34,7 +37,7 @@ const LoginScreen = props => {
       .then(
         () => {
           const user = firebase.auth().currentUser
-          firebase.database().ref("users/" + user.uid).once('value').then((snapshot) => {
+          firebase.database().ref(user.displayName).once('value').then((snapshot) => {
             const isVerified = snapshot.val().verification
             if (isVerified) {
               props.navigation.navigate("home")
@@ -49,93 +52,92 @@ const LoginScreen = props => {
       );
   }
   const bottomSheetRef = useRef();
+
+  Keyboard.addListener('keyboardWillShow', () => setLogoShow(false))
+  Keyboard.addListener('keyboardWillHide', () => setLogoShow(true))
+
   return (
-    <View style={styles.mainWrapper}>
-      {
-        (Platform.OS == 'android') ? (
-          <Image
-            source={require('./Logo.png')}
-            resizeMode={'contain'}
-            style={{width: width * 0.613, marginTop: 100}}
-          />
-        ) : (
-          <SvgUri
-            style={{ marginTop: 100 }}
-            width={width * 0.613}
-            source={require("../../assets/images/Logo.svg")}
-          />
-        )
-      }
-      <TouchableOpacity
-        style={styles.visitWebStyle}
-        onPress={() => bottomSheetRef.current.snapTo(0)}
-      >
-        <MaterialCommunityIcons name="web" size={20} color="#FFF" />
-        <Text style={styles.visitWebText}>Zu unserer Homepage</Text>
-      </TouchableOpacity>
-      <Text style={{ color: "#ABB4BD" }}>oder</Text>
-      <View style={styles.inputWrapper}>
-        <TextField
-          onChangeText={text => setEmail(text)}
-          value={email}
-          label="E-Mail oder KundenNr"
-          keyboardType="email-address"
-        />
-        <TextField
-          onChangeText={pass => setPassword(pass)}
-          value={password}
-          label="Passwort"
-          secureTextEntry
-        />
-        <TouchableOpacity
-          onPress={() => props.navigation.navigate("VerifyEmail")}
-        >
-          <Text style={{ color: "#006F3D" }}>Passwort vergessen?</Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity
-        onPress={() => {
-          Login();
-        }}
-        style={styles.loginButton}
-      >
-        <Text style={{ color: "#FFF" }}>Anmeldung</Text>
-      </TouchableOpacity>
-      <View style={styles.registerWrapper}>
-        <Text style={{ color: "#ABB4BD" }}>Hier geht’s zur </Text>
-        <TouchableOpacity
-          onPress={() => props.navigation.navigate("Registration")}
-        >
-          <Text style={{ color: "#006F3D" }}>Registrierung</Text>
-        </TouchableOpacity>
-      </View>
-      <BottomSheet
-        initialSnap={2}
-        ref={bottomSheetRef}
-        snapPoints={["80%", 0, 0]}
-        renderContent={() => (
-          <View style={styles.panel}>
-            <WebView
-              originWhitelist={["*"]}
-              source={{ uri: "https://www.alumont.com/" }}
-              style={{
-                marginTop: 0,
-                borderTopLeftRadius: 20,
-                borderTopRightRadius: 20
-              }}
-            />
-          </View>
-        )}
-        renderHeader={() => (
-          <View style={styles.header}>
-            <View style={styles.panelHeader}>
-              <View style={styles.panelHandle} />
-            </View>
-          </View>
-        )}
-      />
-    </View>
-  );
+		<KeyboardAvoidingView
+			style={{ flex: 1 }}
+			behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+		>
+			<View style={styles.mainWrapper}>
+				{Platform.OS == 'android' ? (
+					<Image
+						source={require('./Logo.png')}
+						resizeMode={'contain'}
+						style={{ width: width * 0.613, marginTop: 100, display: logoShow ? 'block': 'none' }}
+					/>
+				) : (
+					<SvgUri
+						style={{ marginTop: 100, display: logoShow ? 'block': 'none' }}
+						width={width * 0.613}
+						source={require('../../assets/images/Logo.svg')}
+					/>
+				)}
+				<TouchableOpacity style={styles.visitWebStyle} onPress={() => bottomSheetRef.current.snapTo(0)}>
+					<MaterialCommunityIcons name='web' size={20} color='#FFF' />
+					<Text style={styles.visitWebText}>Zu unserer Homepage</Text>
+				</TouchableOpacity>
+				<Text style={{ color: '#ABB4BD' }}>oder</Text>
+				<View style={styles.inputWrapper}>
+					<TextField
+						onChangeText={(text) => setEmail(text)}
+						value={email}
+						label='E-Mail oder KundenNr'
+						keyboardType='email-address'
+					/>
+					<TextField
+						onChangeText={(pass) => setPassword(pass)}
+						value={password}
+						label='Passwort'
+						secureTextEntry
+					/>
+					<TouchableOpacity onPress={() => props.navigation.navigate('VerifyEmail')}>
+						<Text style={{ color: '#006F3D' }}>Passwort vergessen?</Text>
+					</TouchableOpacity>
+				</View>
+				<TouchableOpacity
+					onPress={() => {
+						Login()
+					}}
+					style={styles.loginButton}>
+					<Text style={{ color: '#FFF' }}>Anmeldung</Text>
+				</TouchableOpacity>
+				<View style={styles.registerWrapper}>
+					<Text style={{ color: '#ABB4BD' }}>Hier geht’s zur </Text>
+					<TouchableOpacity onPress={() => props.navigation.navigate('Registration')}>
+						<Text style={{ color: '#006F3D' }}>Registrierung</Text>
+					</TouchableOpacity>
+				</View>
+				<BottomSheet
+					initialSnap={2}
+					ref={bottomSheetRef}
+					snapPoints={['80%', 0, 0]}
+					renderContent={() => (
+						<View style={styles.panel}>
+							<WebView
+								originWhitelist={['*']}
+								source={{ uri: 'https://www.alumont.com/' }}
+								style={{
+									marginTop: 0,
+									borderTopLeftRadius: 20,
+									borderTopRightRadius: 20,
+								}}
+							/>
+						</View>
+					)}
+					renderHeader={() => (
+						<View style={styles.header}>
+							<View style={styles.panelHeader}>
+								<View style={styles.panelHandle} />
+							</View>
+						</View>
+					)}
+				/>
+			</View>
+		</KeyboardAvoidingView>
+  )
 };
 
 const styles = StyleSheet.create({
